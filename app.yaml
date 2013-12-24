@@ -1,0 +1,45 @@
+application: mlog
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+handlers:
+- url: /favicon\.ico
+  static_files: statics/ico/favicon.ico
+  upload: statics/ico/favicon.ico
+  mime_type: image/x-icon
+
+- url: /robots\.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
+- url: /statics
+  static_dir: statics
+
+- url: /admin
+  script: admin.app
+
+- url: /blog
+  script: blog.app
+
+- url: /wiki
+  script: wiki.app
+
+- url: /product
+  script: product.app
+
+- url: /photo
+  script: photo.app
+
+- url: /about
+  script: about.app
+
+- url: /|/home|/.*
+  script: home.app
