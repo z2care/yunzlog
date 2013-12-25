@@ -25,13 +25,13 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class HomePage(webapp2.RequestHandler):
     def get(self):
         config = ConfigSite()
-        config = ConfigSite.query().fetch(1)
+        config = ConfigSite.query().fetch()
         welcome = Welcome()
-        welcome = Welcome.query().fetch(1)
+        welcome = Welcome.query().fetch()
 
         template_values = {
-            'siteconfig': config,
-            'sitewelcome': welcome,
+            'siteconfig': config[0],
+            'sitewelcome': welcome[0],
         }
         template = JINJA_ENVIRONMENT.get_template('home.html')
         self.response.write(template.render(template_values))

@@ -25,27 +25,26 @@ class AdminPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         config = ConfigSite()
-        config = ConfigSite.query().fetch(1)
+        config = ConfigSite.query().fetch()
         welcome = Welcome()
-        welcome = Welcome.query().fetch(1)
-        print config
-        print welcome
+        welcome = Welcome.query().fetch()
 
         template_values = {
-            'siteconfig': config,
-            'sitewelcome': welcome,
+            'siteconfig': config[0],
+            'sitewelcome': welcome[0],
+            	'myname': config[0].title
         }
         template = JINJA_ENVIRONMENT.get_template('admin.html')
         self.response.write(template.render(template_values))
 
     def post(self):
         config = ConfigSite()
-        config.title = self.request.get("site_title")
+        config.title = self.request.get("title")
         if users.get_current_user():
             config.author = users.get_current_user()
         #config.date already auto set
         config.put()
-        welcome = Welcome(words=self.request.get("hello"), is_show=True)
+        welcome = Welcome(words=self.request.get("words"), is_show=True)
         welcome.put()
         self.redirect('/admin')
 #END: RenderPage
