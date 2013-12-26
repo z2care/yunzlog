@@ -9,7 +9,13 @@
       site_author<input value="{{ siteconfig.author }}" name="author"><br>
       site_datetime<input value="{{ siteconfig.date }}" name="date"><br>
       hello<input value="{{ sitewelcome.words }}" name="words"><br>
-      is_show<input value="{{ sitewelcome.is_show }}" name="is_show"><br>
+      {% if sitewelcome.is_show %}
+      <label for="no">No</label><input type="radio" name="is_show" id="no" value="False" />
+      <label for="yes">Yes</label><input type="radio" name="is_show" id="yes" value="True" CHECKED/>
+      {% else %}
+      <label for="no">No</label><input type="radio" name="is_show" id="no" value="False" CHECKED/>
+      <label for="yes">Yes</label><input type="radio" name="is_show" id="yes" value="True" />
+      {% endif %}
     </form>
     <hr>
   </body>
