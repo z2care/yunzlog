@@ -28,10 +28,15 @@ class HomePage(webapp2.RequestHandler):
         config = ConfigSite.query().fetch()
         welcome = Welcome()
         welcome = Welcome.query().fetch()
-
+        
+        domain=os.environ['HTTP_HOST']
+        print os.environ
+        baseurl="https://"+domain
+        
         template_values = {
             'siteconfig': config[0],
             'sitewelcome': welcome[0],
+            'baseurl': baseurl,
         }
         template = JINJA_ENVIRONMENT.get_template('home.html')
         self.response.write(template.render(template_values))
