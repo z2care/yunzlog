@@ -1,12 +1,59 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head profile="http://gmpg.org/xfn/11">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
-<title>{% block title %} {{ baseurl}} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
+    <title>{% block title %} {{ titleurl}} {% endblock %}</title>
+<!-- css begin -->
+	<link id="callCss" rel="stylesheet" href="../../statics/css/bootstrap.min.css" type="text/css" media="screen"/>
+	<link href="../../statics/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link href="../../statics/css/font-awesome.css" rel="stylesheet" type="text/css">
+	<link href="../../statics/css/base.css" rel="stylesheet" type="text/css">
+	<style type="text/css" id="enject"></style>
+<!-- css end -->
 </head>
 <body>
+<section id="headerSection">
+	<div class="container">
+		<div class="navbar">
+			<div class="container">
+				<button type="button" class="btn btn-navbar active
+				" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<h1><a class="brand" href="index.html"> Business <small>  Ltd.</small></a></h1>
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+						<li class="active"><a href="home">Home</a></li>
+						<li class=""><a href="blog">Blog</a></li>  
+						<li class=""><a href="wiki">Wiki</a></li>
+						<li class=""><a href="photo">Photo</a></li>
+						<li class="dropdown">
+							<a href="product" class="dropdown-toggle" data-toggle="dropdown">Product<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="product/latex2">LaTEX2</a></li>
+								<li><a href="product/android">Android</a></li>
+							</ul>
+						</li>
+						<li class=""><a href="About">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--Header Ends================================================ -->
 {%block login %}{%endblock%}
 <hr>
 {%block content %}{%endblock%}
+<div>abc</div><br>
+<div>abc</div><br>
+<div>abc</div><br>
+<div>abc</div><br>
+<div>abc</div><br>
 </body>
 </html>
