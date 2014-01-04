@@ -1,104 +1,141 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head profile="http://gmpg.org/xfn/11">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
-<title>{% block title %} {{ blog.title}}{% endblock %}</title>
-<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" media="screen" />
-<link rel="alternate" type="application/rss+xml" title="{{ blog.title }} RSS Feed" href="{{ blog.feedurl }}" />
-<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
-<script type="text/javascript" src="/themes/{{ blog.theme_name }}/rounded_corners_lite.inc.js"></script>
-<script type="text/javascript" src="/static/js/jquery-1.2.6.min.js"></script>
-{% block head_block %}{% endblock %}
-<script type="text/JavaScript">
-window.onload = function()
-{
-settings = {
-tl: { radius: 5 },
-tr: { radius: 5 },
-bl: { radius: 5 },
-br: { radius: 5 },
-antiAlias: true,
-autoPad: true,
-validTags: ["div"]
-}
-var myBoxObject = new curvyCorners(settings, "nifty");
-myBoxObject.applyCornersToAll();
-var myBoxObject = new curvyCorners(settings, "meta");
-myBoxObject.applyCornersToAll();
-var myBoxObject = new curvyCorners(settings, "sidebar");
-myBoxObject.applyCornersToAll();
-}
-</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{admin_title}} - SB Admin</title>
 
-</head>
+    <!-- Bootstrap core CSS -->
+    <link href="../../statics/css/bootstrap.css" rel="stylesheet">
 
-<body>
-<div id="main">
-<div id="wrapper">
+    <!-- Add custom CSS here -->
+    <link href="../../statics/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../statics/font-awesome/css/font-awesome.min.css">
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+  </head>
 
-<div id="top">
-<div id="logo"><h1><a href="{{blog.baseurl}}/" title="{{blog.title}}">{{blog.title}}</a></h1>
-</div>
+  <body>
 
-<div id="menu">
-<ul>
-		<li class="{%if ishome%}current_page_item{%else%}page_item{%endif%}" >
-			<a  href="{{ blog.baseurl }}"  >Home</a>
-		</li>
-		{{self.m_list_pages}}
-    <li class="page_item" ><a href="{{blog.feedurl}}">(RSS)</a></li>
-    {% block topmenu %}{% endblock %}
+    <div id="wrapper">
 
-    {%if self.is_admin%}
-     <li><a href="/admin">Admin</a> </li>
-    {%endif%}
-      <li>
-     {%if self.is_login%}
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/admin">SB Admin</a>
+        </div>
 
-       <a href="{{self.logouturl}}">Logout</a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li class="{{dashboard_active}}"><a href="?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="{{charts_active}}"><a href="?action=charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li class="{{tables_active}}"><a href="?action=tables"><i class="fa fa-table"></i> Tables</a></li>
+            <li class="{{forms_active}}"><a href="?action=forms"><i class="fa fa-edit"></i> Forms</a></li>
+            <li class="{{typography_active}}"><a href="?action=typography"><i class="fa fa-font"></i> Typography</a></li>
+            <li class="{{elements_active}}"><a href="?action=elements"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
+            <li class="{{grid_active}}"><a href="?action=grid"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
+            <li class="{{blank_active}}"><a href="?action=blank-page"><i class="fa fa-file"></i> Blank Page</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Dropdown Item</a></li>
+                <li><a href="#">Another Item</a></li>
+                <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>
+              </ul>
+            </li>
+          </ul>
 
-     {%else%}
-       <a href="{{self.loginurl}}">Login</a>
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown messages-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">7 New Messages</li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+              </ul>
+            </li>
+            <li class="dropdown alerts-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Default <span class="label label-default">Default</span></a></li>
+                <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
+                <li><a href="#">Success <span class="label label-success">Success</span></a></li>
+                <li><a href="#">Info <span class="label label-info">Info</span></a></li>
+                <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
+                <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#">View All</a></li>
+              </ul>
+            </li>
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{admin_name}} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="{{admin_logout_url}}"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+	{% block page_wrapper %}{% endblock %}
+	</div><!-- /#wrapper -->
 
-     {%endif%}
-         </li>
+    <!-- JavaScript -->
+    <script src="../../statics/js/jquery-1.10.2.js"></script>
+    <script src="../../statics/js/bootstrap.js"></script>
 
+    <!-- Page Specific Plugins -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <script src="../../statics/js/morris/chart-data-morris.js"></script>
+    <script src="../../statics/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="../../statics/js/tablesorter/tables.js"></script>
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+	<script src="../../statics/js/flot/jquery.flot.js"></script>
+	<script src="../../statics/js/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="../../statics/js/flot/jquery.flot.resize.js"></script>
+	<script src="../../statics/js/flot/jquery.flot.pie.js"></script>
+	<script src="../../statics/js/flot/chart-data-flot.js"></script>
 
-<li id="searchbox">
-
-<form method="get" id="searchform" action="http://www.google.com/search">
-		<input type="text" value="Search..." onfocus="if (this.value == 'Search...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search...';}" name="as_q" id="s" />
-		<input type="image" src="/themes/{{ blog.theme_name }}/images/transparent.gif" id="go" alt="Search" title="Search" />
-		<input name="as_sitesearch" value="{{blog.domain}}" type="hidden">
-
-		</form>
-
-</li>
-
-</ul>
-</div>
-
-</div>
-<div id="content">
-<div id="split">
-
-{%block content %}{%endblock%}
-
-
-</div>
-</div>
-</div>
-
-
-<div id="push"></div>
-
-<div id="footer">
-	<div class="footer">
-			<p class="fooleft">{{blog.title}} is proudly powered by <a href="http://xuming.net">Micolog</a>. Theme by <a href="http://bob.my/" title="Simple">Bob</a>
-		</p>
-		<p class="fooright"><a href="#top" title="Top">top</a></p>
-	</div>
-</div>
-
-</body>
+  </body>
 </html>

@@ -1,59 +1,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head profile="http://gmpg.org/xfn/11">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
-    <title>{% block title %} {{ titleurl}} {% endblock %}</title>
-<!-- css begin -->
-	<link id="callCss" rel="stylesheet" href="../../statics/css/bootstrap.min.css" type="text/css" media="screen"/>
-	<link href="../../statics/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-	<link href="../../statics/css/font-awesome.css" rel="stylesheet" type="text/css">
-	<link href="../../statics/css/base.css" rel="stylesheet" type="text/css">
-	<style type="text/css" id="enject"></style>
-<!-- css end -->
-</head>
-<body>
-<section id="headerSection">
-	<div class="container">
-		<div class="navbar">
-			<div class="container">
-				<button type="button" class="btn btn-navbar active
-				" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<h1><a class="brand" href="index.html"> Business <small>  Ltd.</small></a></h1>
-				<div class="nav-collapse collapse">
-					<ul class="nav pull-right">
-						<li class="active"><a href="home">Home</a></li>
-						<li class=""><a href="blog">Blog</a></li>  
-						<li class=""><a href="wiki">Wiki</a></li>
-						<li class=""><a href="photo">Photo</a></li>
-						<li class="dropdown">
-							<a href="product" class="dropdown-toggle" data-toggle="dropdown">Product<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="product/latex2">LaTEX2</a></li>
-								<li><a href="product/android">Android</a></li>
-							</ul>
-						</li>
-						<li class=""><a href="About">About</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--Header Ends================================================ -->
-{%block login %}{%endblock%}
-<hr>
-{%block content %}{%endblock%}
-<div>abc</div><br>
-<div>abc</div><br>
-<div>abc</div><br>
-<div>abc</div><br>
-<div>abc</div><br>
-</body>
+
+    <title>{{page_title}} - Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../statics/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../../statics/css/modern-business.css" rel="stylesheet">
+    <link href="../../statics/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+          <a class="navbar-brand" href="index.html">Modern Business</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="{{about_active}}"><a href="about.html">About</a></li>
+            <li class="{{services_active}}"><a href="services.html">Services</a></li>
+            <li class="{{contact_active}}"><a href="contact.php">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="{{portfolio1_active}}"><a href="portfolio-1-col.html">1 Column Portfolio</a></li>
+                <li class="{{portfolio2_active}}"><a href="portfolio-2-col.html">2 Column Portfolio</a></li>
+                <li class="{{portfolio3_active}}"><a href="portfolio-3-col.html">3 Column Portfolio</a></li>
+                <li class="{{portfolio4_active}}"><a href="portfolio-4-col.html">4 Column Portfolio</a></li>
+                <li class="{{portfolio_item_active}}"><a href="portfolio-item.html">Single Portfolio Item</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="{{bloghome1_active}}"><a href="blog-home-1.html">Blog Home 1</a></li>
+                <li class="{{bloghome2_active}}"><a href="blog-home-2.html">Blog Home 2</a></li>
+                <li class="{{blogpost_active}}"><a href="blog-post.html">Blog Post</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="{{fullwidth_active}}"><a href="full-width.html">Full Width Page</a></li>
+                <li class="{{sidebar_active}}"><a href="sidebar.html">Sidebar Page</a></li>
+                <li class="{{faq_active}}"><a href="faq.html">FAQ</a></li>
+                <li class="{{404_active}}"><a href="404.html">404</a></li>
+                <li class="{{pricing_active}}"><a href="pricing.html">Pricing Table</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+    {% block content %}
+	{% endblock %}
+
+    <div class="container">
+
+      <hr>
+
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; Company 2013</p>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="../../statics/js/jquery-1.10.2.js"></script>
+    <script src="../../statics/js/bootstrap.js"></script>
+    <script src="../../statics/js/modern-business.js"></script>
+
+  </body>
 </html>

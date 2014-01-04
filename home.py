@@ -34,7 +34,7 @@ class HomePage(webapp2.RequestHandler):
         baseurl="https://"+domain
         
         template_values = {
-            'siteconfig': config[0],
+            'page_title': 'Home',
             'sitewelcome': welcome[0],
             'baseurl': baseurl,
         }

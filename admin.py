@@ -23,42 +23,56 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 #START: RenderPage
 class AdminPage(webapp2.RequestHandler):
     def get(self):
+        action=self.request.get('action')
         user = users.get_current_user()
-        
-        if user:
-            greeting = ('<div style="float:right">Welcome, %s! (<a href="%s">sign out</a>)</div>' %
-                        (user.nickname(), users.create_logout_url('/')))
-        else:
-            greeting = ('<div style="float:right"><a href="%s">Sign in or register</a>.</div>' %
-                        users.create_login_url('/'))
-        
-        self.response.out.write("<br>%s<br><hr>" % greeting)
-        
-        config = ConfigSite()
-        config = ConfigSite.query().fetch()
-        welcome = Welcome()
-        welcome = Welcome.query().fetch()
+        admin_name = user.nickname()
+        admin_logout_url = users.create_logout_url('/')
 
         domain=os.environ['HTTP_HOST']
-        baseurl="https://"+g_blog.domain
+        baseurl="https://"+domain
 
         template_values = {
-            'siteconfig': config[0],
-            'sitewelcome': welcome[0],
-            'username': greeting,
-            'baseurl': baseurl,
+                'admin_name': admin_name,
+                'admin_logout_url': admin_logout_url,
         }
-        
-        template = JINJA_ENVIRONMENT.get_template('admin.html')
-        self.response.write(template.render(template_values))
 
+        if action=='dashboard':
+            template_values.update({'dashboard_active': 'active','admin_title':'Dashboard'})
+            template = JINJA_ENVIRONMENT.get_template('admin.html')
+        elif action=='charts':
+            template_values.update({'charts_active': 'active','admin_title':'Charts'})
+            template = JINJA_ENVIRONMENT.get_template('charts.html')
+        elif action=='tables':
+            template_values.update({'tables_active': 'active','admin_title':'Tables'})
+            template = JINJA_ENVIRONMENT.get_template('tables.html')
+        elif action=='forms':
+            template_values.update({'forms_active': 'active','admin_title':'Forms'})
+            template = JINJA_ENVIRONMENT.get_template('forms.html')
+        elif action=='typography':
+            template_values.update({'typography_active': 'active','admin_title':'Typography'})
+            template = JINJA_ENVIRONMENT.get_template('typography.html')
+        elif action=='elements':
+            template_values.update({'elements_active': 'active','admin_title':'Elements'})
+            template = JINJA_ENVIRONMENT.get_template('bootstrap-elements.html')
+        elif action=='grid':
+            template_values.update({'grid_active': 'active','admin_title':'Grid'})
+            template = JINJA_ENVIRONMENT.get_template('bootstrap-grid.html')
+        elif action=='blank-page':
+            template_values.update({'blank_active': 'active','admin_title':'Blank'})
+            template = JINJA_ENVIRONMENT.get_template('blank-page.html')
+        else:
+            template_values.update({'dashboard_active': 'active','admin_title':'Dashboard'})
+            template = JINJA_ENVIRONMENT.get_template('admin.html')
+
+        self.response.write(template.render(template_values))
+    '''
     def post(self):
         config = ConfigSite.query().fetch()[0]
         config.title = self.request.get("title")
         if users.get_current_user():
             config.author = users.get_current_user()
         else:
-        	config.author = users.User("anonymous@xxx.com")
+            config.author = users.User("anonymous@xxx.com")
         #config.date already auto set
         config.put()
         welcome = Welcome.query().fetch()[0]
@@ -66,6 +80,7 @@ class AdminPage(webapp2.RequestHandler):
         welcome.is_show = (self.request.get("is_show") == "True")
         welcome.put()
         self.redirect('/admin')
+    '''
 #END: RenderPage
 
 # START: Frame
