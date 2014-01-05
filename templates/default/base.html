@@ -28,43 +28,18 @@
             <span class="icon-bar"></span>
           </button>
           <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-          <a class="navbar-brand" href="index.html">Modern Business</a>
+          <a class="navbar-brand" href="/">Yunzlog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="{{about_active}}"><a href="about.html">About</a></li>
-            <li class="{{services_active}}"><a href="services.html">Services</a></li>
-            <li class="{{contact_active}}"><a href="contact.php">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="{{portfolio1_active}}"><a href="portfolio-1-col.html">1 Column Portfolio</a></li>
-                <li class="{{portfolio2_active}}"><a href="portfolio-2-col.html">2 Column Portfolio</a></li>
-                <li class="{{portfolio3_active}}"><a href="portfolio-3-col.html">3 Column Portfolio</a></li>
-                <li class="{{portfolio4_active}}"><a href="portfolio-4-col.html">4 Column Portfolio</a></li>
-                <li class="{{portfolio_item_active}}"><a href="portfolio-item.html">Single Portfolio Item</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="{{bloghome1_active}}"><a href="blog-home-1.html">Blog Home 1</a></li>
-                <li class="{{bloghome2_active}}"><a href="blog-home-2.html">Blog Home 2</a></li>
-                <li class="{{blogpost_active}}"><a href="blog-post.html">Blog Post</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="{{fullwidth_active}}"><a href="full-width.html">Full Width Page</a></li>
-                <li class="{{sidebar_active}}"><a href="sidebar.html">Sidebar Page</a></li>
-                <li class="{{faq_active}}"><a href="faq.html">FAQ</a></li>
-                <li class="{{p404_active}}"><a href="404.html">404</a></li>
-                <li class="{{pricing_active}}"><a href="pricing.html">Pricing Table</a></li>
-              </ul>
-            </li>
+            <li class="{{home_active}}"><a href="/home">Home</a></li>
+            <li class="{{blog_active}}"><a href="/blog">Blog</a></li>
+            <li class="{{wiki_active}}"><a href="/wiki">Wiki</a></li>
+			<li class="{{project_active}}"><a href="/project">Project</a></li>
+			<li class="{{gallery_active}}"><a href="/gallery">Gallery</a></li>
+            <li class="{{about_active}}"><a href="/about">About</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
@@ -73,17 +48,18 @@
 	{% endblock %}
 
     <div class="container">
-
       <hr>
-
       <footer>
         <div class="row">
           <div class="col-lg-12">
-            <p>Copyright &copy; Company 2013</p>
+            <p>&copy; Yunzlog 2014
+			 <a href="http://www.appspot.com">
+		      <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine" />
+	          </a>
+            </p>
           </div>
         </div>
       </footer>
-
     </div><!-- /.container -->
 
     <!-- JavaScript -->

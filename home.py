@@ -24,18 +24,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 #START: RenderPage
 class HomePage(webapp2.RequestHandler):
     def get(self):
-        config = ConfigSite()
-        config = ConfigSite.query().fetch()
-        welcome = Welcome()
-        welcome = Welcome.query().fetch()
-        
         domain=os.environ['HTTP_HOST']
-        print os.environ
         baseurl="https://"+domain
         
         template_values = {
             'page_title': 'Home',
-            'sitewelcome': welcome[0],
+            'home_active': 'active',
             'baseurl': baseurl,
         }
         template = JINJA_ENVIRONMENT.get_template('home.html')
@@ -44,6 +38,6 @@ class HomePage(webapp2.RequestHandler):
 #END: RenderPage
 
 # START: Frame
-app = webapp2.WSGIApplication([('/', HomePage)
+app = webapp2.WSGIApplication([('/.*', HomePage)
                                ], debug=True)
 # END: Frame

@@ -20,22 +20,22 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 #START: RenderPage
-class BlogPage(webapp2.RequestHandler):
+class ProjectPage(webapp2.RequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
         
         template_values = {
-            'page_title': 'Blog',
-            'blog_active': 'active',
+            'page_title': 'Project',
+            'project_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('blog.html')
+        template = JINJA_ENVIRONMENT.get_template('project.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage
 
 # START: Frame
-app = webapp2.WSGIApplication([('/blog', BlogPage)
+app = webapp2.WSGIApplication([('/project', ProjectPage)
                                ], debug=True)
 # END: Frame

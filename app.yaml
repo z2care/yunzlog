@@ -33,11 +33,11 @@ handlers:
 - url: /wiki
   script: wiki.app
 
-- url: /product
-  script: product.app
+- url: /project
+  script: project.app
 
-- url: /photo
-  script: photo.app
+- url: /gallery
+  script: gallery.app
 
 - url: /about
   script: about.app
