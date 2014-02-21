@@ -13,14 +13,10 @@ import jinja2
 import os, logging
 
 from model import *
+from base import *
 
-JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__),'templates','default')),
-    extensions=['jinja2.ext.autoescape'],
-    autoescape=True)
-
-#START: RenderPage
-class BlogPage(webapp2.RequestHandler):
+#START: BlogsListPage
+class BlogsList(webapp2.RequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -30,12 +26,32 @@ class BlogPage(webapp2.RequestHandler):
             'blog_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('blog.html')
+        template = JINJA_ENVIRONMENT.get_template('bloglist.html')
         self.response.write(template.render(template_values))
+#END: BlogsListPage
+#START: SingleBlogPage
+class SingleBlog(webapp2.RequestHandler):
+    def get(self,slug=None):
+        logging.info("slug="+slug)
+        domain=os.environ['HTTP_HOST']
+        baseurl="https://"+domain
         
-#END: RenderPage
+        template_values = {
+            'page_title': 'Blog',
+            'blog_active': 'active',
+            'baseurl': baseurl,
+        }
+        template = JINJA_ENVIRONMENT.get_template('singleblog.html')
+        self.response.write(template.render(template_values))
+#END: SingleBlogPage
+class ErrorPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('error404.html')
+        self.response.write(template.render())
 
 # START: Frame
-app = webapp2.WSGIApplication([('/blog', BlogPage)
+app = webapp2.WSGIApplication([('/blog', BlogsList),
+                               ('/blog/(.*)', SingleBlog),
+                               ('.*',ErrorPage),
                                ], debug=True)
 # END: Frame

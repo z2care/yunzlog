@@ -8,12 +8,16 @@ from google.appengine.api import memcache
 from google.appengine.ext import ndb
 import logging
 
-#logging('model load...')
+logging.info('model loaded...')
 
-class ConfigSite(ndb.Model):
-    title = ndb.StringProperty(required=True)
+class Blog(ndb.Model):
+    title = ndb.StringProperty(default='')
+    draft = ndb.BooleanProperty(default=False)
     author = ndb.UserProperty()
+    content = ndb.TextProperty(default='')
     date = ndb.DateTimeProperty(auto_now_add=True)
+    read = ndb.IntegerProperty(default=0)
+    summary = ndb.StringProperty()
 
 class Welcome(ndb.Model):
     words = ndb.StringProperty(required=True)

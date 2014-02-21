@@ -10,6 +10,7 @@ import webapp2
 import jinja2
 
 import os, logging
+from datetime import datetime
 
 from model import *
 
@@ -22,7 +23,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 #START: RenderPage
 class AdminPage(webapp2.RequestHandler):
-    def get(self):
+    def get(self,item=None):
         action=self.request.get('action')
         user = users.get_current_user()
         admin_name = user.nickname()
@@ -34,9 +35,13 @@ class AdminPage(webapp2.RequestHandler):
         template_values = {
                 'admin_name': admin_name,
                 'admin_logout_url': admin_logout_url,
+                'author':user.nickname(),
+                'date':datetime.now()
         }
-
-        if action=='dashboard':
+        if item=='blog':
+            template_values.update({'blog_active': 'active','admin_title':'Blog'})
+            template = JINJA_ENVIRONMENT.get_template('blog.html')
+        elif action=='dashboard':
             template_values.update({'dashboard_active': 'active','admin_title':'Dashboard'})
             template = JINJA_ENVIRONMENT.get_template('admin.html')
         elif action=='charts':
@@ -65,25 +70,24 @@ class AdminPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('admin.html')
 
         self.response.write(template.render(template_values))
-    '''
-    def post(self):
-        config = ConfigSite.query().fetch()[0]
-        config.title = self.request.get("title")
+
+    def post(self,item=None):
         if users.get_current_user():
-            config.author = users.get_current_user()
+            author = users.get_current_user()
         else:
-            config.author = users.User("anonymous@xxx.com")
-        #config.date already auto set
-        config.put()
-        welcome = Welcome.query().fetch()[0]
-        welcome.words = self.request.get("words")
-        welcome.is_show = (self.request.get("is_show") == "True")
-        welcome.put()
-        self.redirect('/admin')
-    '''
+            author = users.User("anonymous@xxx.com")
+        title=self.param('title')
+        date=self.param('date')
+        summary=self.param('summary')
+        content=self.param('content')
+        blog=Blog(title=title,author=author,summary=summary,content=content,date=date)
+        blog.put()
+#        self.redirect('/admin')
+
 #END: RenderPage
 
 # START: Frame
 app = webapp2.WSGIApplication([('/admin', AdminPage),
+                               ('/admin/(.*)',AdminPage),
                                   ])
 # END: Frame

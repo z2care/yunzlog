@@ -30,7 +30,7 @@ class ProjectPage(webapp2.RequestHandler):
             'project_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('project.html')
+        template = JINJA_ENVIRONMENT.get_template('projlist.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage
