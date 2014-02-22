@@ -11,10 +11,11 @@ import logging
 logging.info('model loaded...')
 
 class Blog(ndb.Model):
-    title = ndb.StringProperty(default='')
-    draft = ndb.BooleanProperty(default=False)
+    title = ndb.StringProperty()
+    type = ndb.StringProperty()
+    category = ndb.StringProperty()
     author = ndb.UserProperty()
-    content = ndb.TextProperty(default='')
+    content = ndb.TextProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
     read = ndb.IntegerProperty(default=0)
     summary = ndb.StringProperty()

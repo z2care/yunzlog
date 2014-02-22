@@ -12,14 +12,20 @@ import jinja2
 import os, logging
 from datetime import datetime
 
+import gettext
+
 from model import *
 
 #logging('home load...')
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__),'templates','admin')),
-    extensions=['jinja2.ext.autoescape'],
-    autoescape=True)
+    extensions=['jinja2.ext.autoescape','jinja2.ext.i18n'], autoescape=True)
+tr=gettext.translation('messages','locale',fallback=True,languages=['zh_CN'],codeset='utf-8')
+tr.install(unicode=True, names=['gettext', 'ngettext'])
+
+#the same part
+JINJA_ENVIRONMENT.install_gettext_translations(tr)
 
 #START: RenderPage
 class AdminPage(webapp2.RequestHandler):
@@ -39,21 +45,12 @@ class AdminPage(webapp2.RequestHandler):
                 'author':user.nickname(),
                 'date':datetime.now()
         }
-        if item=='dashboard':
-            template_values.update({'dashboard_active': 'active','admin_title':'Dashboard'})
-            template = JINJA_ENVIRONMENT.get_template('admin.html')
-        elif item=='elements':
-            template_values.update({'elements_active': 'active','admin_title':'Elements'})
-            template = JINJA_ENVIRONMENT.get_template('bootstrap-elements.html')
-        elif item=='grid':
-            template_values.update({'grid_active': 'active','admin_title':'Grid'})
-            template = JINJA_ENVIRONMENT.get_template('bootstrap-grid.html')
-        elif item=='blank-page':
-            template_values.update({'blank_active': 'active','admin_title':'Blank'})
-            template = JINJA_ENVIRONMENT.get_template('blank-page.html')
-        else:#other options
+        if item:
             template_values.update({item+'_active': 'active','admin_title':item})
             template = JINJA_ENVIRONMENT.get_template(item+'.html')
+        else:
+            template_values.update({'article_active': 'active','admin_title':'article'})
+            template = JINJA_ENVIRONMENT.get_template('article.html')
 
         self.response.write(template.render(template_values))
 
