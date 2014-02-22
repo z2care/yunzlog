@@ -13,11 +13,7 @@ import jinja2
 import os, logging
 
 from model import *
-
-JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__),'templates','default')),
-    extensions=['jinja2.ext.autoescape'],
-    autoescape=True)
+from base import *
 
 #START: RenderPage
 class AboutPage(webapp2.RequestHandler):

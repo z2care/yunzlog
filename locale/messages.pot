@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-01-08 23:51+0800\n"
+"POT-Creation-Date: 2014-02-22 17:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: templates/default/base.html:37
-msgid "Home"
-msgstr ""
+#: templates/default/base.html:31
+msgid "Yunzlog"
+msgstr "云之歌"
 
-#: templates/default/base.html:38
+#: templates/default/base.html:37 templates/default/singleblog.html:10
+msgid "Home"
+msgstr "首页"
+
+#: templates/default/base.html:38 templates/default/singleblog.html:11
 msgid "Blog"
-msgstr ""
+msgstr "博客"
 
 #: templates/default/base.html:39
 msgid "Wiki"
-msgstr ""
+msgstr "维基"
 
 #: templates/default/base.html:40
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
 #: templates/default/base.html:41
 msgid "Gallery"
-msgstr ""
+msgstr "图库"
 
 #: templates/default/base.html:42
 msgid "About"
-msgstr ""
+msgstr "关于"
 
