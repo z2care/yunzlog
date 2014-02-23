@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block page_wrapper %}
+      <div id="page-wrapper">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>Tables <small>Sort Your Data</small></h1>
+            <ol class="breadcrumb">
+              <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li class="active"><i class="fa fa-table"></i> Tables</li>
+            </ol>
+            <div class="alert alert-info alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              We're using <a class="alert-link" href="http://tablesorter.com/docs/">Tablesorter 2.0</a> for the sort function on the tables. Read the documentation for more customization options or feel free to use something else!
+            </div>
+          </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Contextual Classes</h2>
+            <div class="table-responsive">
+			  {% if articles %}
+              <table class="table table-hover table-striped tablesorter">			  
+                <thead>
+                  <tr>
+                    <th>{{_("Type")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Title")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Url")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Author")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Read")}} <i class="fa fa-sort"></i></th>
+					<th>{{_("Date")}} <i class="fa fa-sort"></i></th>
+					<th>{{_("Edit")}} <i class="fa fa-sort"></i></th>
+                  </tr>
+                </thead>
+                <tbody>				  
+				{% for article in articles %}
+				  <tr class="active"><!--active,success,warning,danger,(or empty class)-->
+					<td>{{article.type}}</td>
+					<td>{{article.title}}</td>
+					<td>{{article.url}}</td>
+					<td>{{article.author}}</td>
+					<td>{{article.read}}</td>
+					<td>{{article.date}}</td>
+					<td>Edit Button</td>
+				  </tr>
+				{% endfor %}
+                </tbody>
+			  {% else %}
+				<b>No article,please go to <a class="alert-link" href="/admin/article">edit</a>.</b>
+			  {% endif %}
+              </table>
+            </div>
+          </div>
+
+        </div><!-- /.row -->
+          <div class="col-lg-6">
+            <h2>Bootstrap Docs</h2>
+            <p>For complete documentation, please visit <a target="_blank" href="http://getbootstrap.com/css/#tables">Bootstrap's Tables Documentation</a>.</p>
+          </div>
+      </div><!-- /#page-wrapper -->
+{% endblock %}

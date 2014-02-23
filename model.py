@@ -10,7 +10,8 @@ import logging
 
 logging.info('model loaded...')
 
-class Blog(ndb.Model):
+class Article(ndb.Model):
+    url = ndb.StringProperty()
     title = ndb.StringProperty()
     type = ndb.StringProperty()
     category = ndb.StringProperty()

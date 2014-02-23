@@ -46,3 +46,24 @@ msgstr "图库"
 msgid "About"
 msgstr "关于"
 
+msgid "Type"
+msgstr "类型"
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Url"
+msgstr "链接"
+
+msgid "Author"
+msgstr "作者"
+
+msgid "Read"
+msgstr "阅读"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Edit"
+msgstr "编辑"
+

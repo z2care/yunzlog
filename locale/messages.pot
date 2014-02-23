@@ -19,29 +19,49 @@ msgstr ""
 
 #: templates/default/base.html:31
 msgid "Yunzlog"
-msgstr "云之歌"
+msgstr ""
 
 #: templates/default/base.html:37 templates/default/singleblog.html:10
 msgid "Home"
-msgstr "首页"
+msgstr ""
 
 #: templates/default/base.html:38 templates/default/singleblog.html:11
 msgid "Blog"
-msgstr "博客"
+msgstr ""
 
 #: templates/default/base.html:39
 msgid "Wiki"
-msgstr "维基"
+msgstr ""
 
 #: templates/default/base.html:40
 msgid "Project"
-msgstr "项目"
+msgstr ""
 
 #: templates/default/base.html:41
 msgid "Gallery"
-msgstr "图库"
+msgstr ""
 
 #: templates/default/base.html:42
 msgid "About"
-msgstr "关于"
+msgstr ""
 
+msgid "Type"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Read"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
