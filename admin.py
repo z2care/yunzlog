@@ -30,6 +30,7 @@ JINJA_ENVIRONMENT.install_gettext_translations(tr)
 #START: RenderPage
 class AdminPage(webapp2.RequestHandler):
     def get(self,item=None):
+
         logging.info('get arrived')
         user = users.get_current_user()
         admin_name = user.nickname()

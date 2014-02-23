@@ -34,13 +34,11 @@ class BlogsList(webapp2.RequestHandler):
 #END: BlogsListPage
 #START: SingleBlogPage
 class SingleBlog(webapp2.RequestHandler):
-    def get(self,slug=None):
+    def get(self,url=None):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
-        
+        logging.info('url='+baseurl+'/'+url)
         article = Article.query().fetch(1)
-
-        logging.info(article)
 
         template_values = {
             'page_title': 'Blog',

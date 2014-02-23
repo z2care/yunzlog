@@ -67,3 +67,6 @@ msgstr "日期"
 msgid "Edit"
 msgstr "编辑"
 
+msgid "Posted on"
+msgstr "发布于"
+
