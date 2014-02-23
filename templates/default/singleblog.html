@@ -20,13 +20,17 @@
         
           <!-- the actual blog post: title/author/date/content -->
           <hr>
-          <p><i class="fa fa-clock-o"></i> {{_("Posted on")}} August 24, 2013 at 9:00 PM by <a href="#">{{author}}</a> <i class="fa fa-search"></i> {{read}} {{_("Read")}}</p>
-		  <h2>{{title}}</h2>
+          <p>
+		    <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article[0].date}}
+			<i class="fa fa-search"></i>{{article[0].read}} {{_("Read")}}
+			<i class="fa fa-pencil">{{_("Author")}} {{article[0].author}}</i>
+		  </p>
+		  <h2>{{article[0].title}}</h2>
           <hr>
           <img src="http://placehold.it/900x300" class="img-responsive">
           <hr>
-          <p class="lead">{{summary}}</p>
-          <p>{{content}}</p>
+          <p class="lead">{{article[0].summary}}</p>
+          <p>{{article[0].content|safe}}</p>
           <p><strong>More link:</strong></p>
           <ul>
             <li><a href="http://www.google.com.hk/">Google</a></li>

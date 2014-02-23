@@ -21,10 +21,13 @@ class BlogsList(webapp2.RequestHandler):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
         
+        articles = Article.query().fetch(10, offset=0)
+
         template_values = {
             'page_title': 'Blog',
             'blog_active': 'active',
             'baseurl': baseurl,
+            'articles': articles,
         }
         template = JINJA_ENVIRONMENT.get_template('bloglist.html')
         self.response.write(template.render(template_values))
@@ -32,14 +35,18 @@ class BlogsList(webapp2.RequestHandler):
 #START: SingleBlogPage
 class SingleBlog(webapp2.RequestHandler):
     def get(self,slug=None):
-        logging.info("slug="+slug)
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
         
+        article = Article.query().fetch(1)
+
+        logging.info(article)
+
         template_values = {
             'page_title': 'Blog',
             'blog_active': 'active',
-            'baseurl': baseurl,
+            'article': article,
+            'baseurl': baseurl,            
         }
         template = JINJA_ENVIRONMENT.get_template('singleblog.html')
         self.response.write(template.render(template_values))
