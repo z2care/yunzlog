@@ -57,19 +57,59 @@ class AdminPage(webapp2.RequestHandler):
 
     def post(self,item=None):
         logging.info('post arrived!')
+        
         if users.get_current_user():
             author = users.get_current_user()
         else:
             author = users.User("anonymous@xxx.com")
+        
         title=self.request.get('title')
-        date=self.request.get('date')
-#        summary=self.request.get('summary')
-        summary=title
+
+        timestamp=datetime.now()
+        archive=timestamp.strftime('%Y%m')
+        logging.info('archive='+archive)
+        pageid=timestamp.strftime('%d%H%M')
+        url=os.path.join('/blog', archive, pageid).replace('\\','/')
+
+        slug=self.request.get('slug')
+
         content=self.request.get("content")
-        article=Article(url='/blog/test',title=title,author=author,summary=summary,type='Origin',category='Life',content=content,date=datetime.now())
+        summary=content[:10]
+
+        article=Article(url=url, title=title, author=author, summary=summary,type='Origin',
+                        category='Life', content=content, date=timestamp, archive=archive, 
+                        pageid=pageid, slug=slug)
         article.put()
         self.redirect('/admin/listing')
 #END: RenderPage
+
+class SettingPage(webapp2.RequestHandler):
+    def get(self):
+        logging.info('setting get arrived')
+        user=users.get_current_user()
+        admin_name = user.nickname()
+        admin_logout_url = users.create_logout_url('/')
+
+        domain=os.environ['HTTP_HOST']
+        baseurl="https://"+domain
+
+        #articles = Setting.query().fetch()
+        setting = Setting(site_title='test title for setting2')
+        setting.put()
+
+        template_values = {
+                'admin_name': admin_name,
+                'admin_logout_url': admin_logout_url,
+                'author':user.nickname(),
+                'date':datetime.now(),
+                'setting':setting
+        }
+
+
+        template_values.update({'setting_active': 'active','admin_title':'setting'})
+        template = JINJA_ENVIRONMENT.get_template('blank-page.html')
+
+        self.response.write(template.render(template_values))
 
 class ListingPage(webapp2.RequestHandler):
     def get(self):
@@ -81,7 +121,7 @@ class ListingPage(webapp2.RequestHandler):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
 
-        articles = Article.query().fetch(10, offset=0)
+        articles = Article.query().order(-Article.date).fetch(10, offset=0)
 
         template_values = {
                 'admin_name': admin_name,
@@ -100,6 +140,7 @@ class ListingPage(webapp2.RequestHandler):
 # START: Frame
 app = webapp2.WSGIApplication([('/admin', AdminPage),
                                ('/admin/listing',ListingPage),
+                               ('/admin/setting',SettingPage),
                                ('/admin/(.*)',AdminPage),
                                   ])
 # END: Frame

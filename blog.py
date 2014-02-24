@@ -21,7 +21,7 @@ class BlogsList(webapp2.RequestHandler):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
         
-        articles = Article.query().fetch(10, offset=0)
+        articles = Article.query().order(-Article.date).fetch(10, offset=0)
 
         template_values = {
             'page_title': 'Blog',
@@ -37,8 +37,10 @@ class SingleBlog(webapp2.RequestHandler):
     def get(self,url=None):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
-        logging.info('url='+baseurl+'/'+url)
-        article = Article.query().fetch(1)
+        logging.info('url='+baseurl+'/blog/'+url)
+        article = Article.query(Article.url=='/blog/'+url).fetch()
+        article[0].read += 1
+        article[0].put()
 
         template_values = {
             'page_title': 'Blog',

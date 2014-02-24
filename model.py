@@ -12,21 +12,26 @@ logging.info('model loaded...')
 
 class Article(ndb.Model):
     url = ndb.StringProperty()
-    title = ndb.StringProperty()
+    slug = ndb.StringProperty(default='')
+    title = ndb.StringProperty(default='')
     type = ndb.StringProperty()
     category = ndb.StringProperty()
     author = ndb.UserProperty()
-    content = ndb.TextProperty()
-    date = ndb.DateTimeProperty(auto_now_add=True)
+    content = ndb.TextProperty(default='')
+    date = ndb.DateTimeProperty()
+    pageid = ndb.StringProperty()
+    archive = ndb.StringProperty()
     read = ndb.IntegerProperty(default=0)
-    summary = ndb.StringProperty()
+    summary = ndb.StringProperty(default='')
 
-class Welcome(ndb.Model):
-    words = ndb.StringProperty(required=True)
-    is_show = ndb.BooleanProperty(default=True)
+class Setting(ndb.Model):
+    site_title = ndb.StringProperty()
+    #site_subtitle = ndb.StringProperty()
+    #listmax = ndb.IntegerProperty(default=8)
 
-    def cache_set(self):
-        memcache.set(self.key().name(), self, namespace=self.key().kind())
+    def set_cache(self):
+      memcache.set('site', self)
+
     def put(self):
-        self.cache_set()
-        ndb.Model.put(self)
+      self.set_cache()
+      ndb.Model.put(self)

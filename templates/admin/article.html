@@ -3,10 +3,10 @@
       <div id="page-wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h1>Writting <small>edit your blog</small></h1>
+            <h1>Writting <small>record you have thought</small></h1>
             <ol class="breadcrumb">
-              <li><a href="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-              <li class="active"><i class="fa fa-edit"></i> Article</li>
+              <li><a href="/admin"><i class="fa fa-dashboard"></i> {{_("Admin")}}</a></li>
+              <li class="active"><i class="fa fa-edit"></i> {{_("Article")}}</li>
             </ol>
             <!-- <div class="alert alert-info alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -15,9 +15,14 @@
           </div>
         </div><!-- /.row -->
 
-        <form role="form" action="/admin/blog" method="post">
-
+        <form role="form" action="/admin/article" method="post">
 			<div class="row">
+			  <div class="col-lg-6">
+				  <div class="form-group">
+					  <label>Blog Title</label>
+					  <input class="form-control" name="title" placeholder="enter title ...">
+				  </div>
+			  </div>
 			  <div class="col-lg-2" class="form-group">
 				<label>Type</label>
 				<select class="form-control" name="type">
@@ -26,10 +31,11 @@
 				  <option>Reference</option>
 				</select>
 			  </div>
-			  <div class="col-lg-6">
+			</div>
+            <div class="row">
+			  <div class="col-lg-8">
 				  <div class="form-group">
-					  <label>Blog Title</label>
-					  <input class="form-control" name="title" placeholder="enter title ...">
+					  <input class="form-control" name="slug" placeholder="enter slug ...">
 				  </div>
 			  </div>
 			</div>
