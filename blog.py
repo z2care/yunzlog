@@ -16,7 +16,7 @@ from model import *
 from base import *
 
 #START: BlogsListPage
-class BlogsList(webapp2.RequestHandler):
+class BlogsList(BaseRequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -29,11 +29,11 @@ class BlogsList(webapp2.RequestHandler):
             'baseurl': baseurl,
             'articles': articles,
         }
-        template = JINJA_ENVIRONMENT.get_template('bloglist.html')
+        template = self.get_env.get_template('bloglist.html')
         self.response.write(template.render(template_values))
 #END: BlogsListPage
 #START: SingleBlogPage
-class SingleBlog(webapp2.RequestHandler):
+class SingleBlog(BaseRequestHandler):
     def get(self,url=None):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain

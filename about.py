@@ -16,7 +16,7 @@ from model import *
 from base import *
 
 #START: RenderPage
-class AboutPage(webapp2.RequestHandler):
+class AboutPage(BaseRequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -26,7 +26,7 @@ class AboutPage(webapp2.RequestHandler):
             'about_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('about.html')
+        template = self.get_env.get_template('about.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage

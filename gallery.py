@@ -16,7 +16,7 @@ from model import *
 from base import *
 
 #START: RenderPage
-class GalleryPage(webapp2.RequestHandler):
+class GalleryPage(BaseRequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -26,7 +26,7 @@ class GalleryPage(webapp2.RequestHandler):
             'gallery_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('gallery.html')
+        template = self.get_env.get_template('gallery.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage

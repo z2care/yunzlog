@@ -16,7 +16,7 @@ from model import *
 from base import *
 
 #START: RenderPage
-class ProjectPage(webapp2.RequestHandler):
+class ProjectPage(BaseRequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -26,7 +26,7 @@ class ProjectPage(webapp2.RequestHandler):
             'project_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('projlist.html')
+        template = self.get_env.get_template('projlist.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage

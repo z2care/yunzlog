@@ -28,6 +28,7 @@ class Setting(ndb.Model):
     site_title = ndb.StringProperty()
     #site_subtitle = ndb.StringProperty()
     #listmax = ndb.IntegerProperty(default=8)
+    default_lang = ndb.StringProperty(default='zh_CN')
 
     def set_cache(self):
       memcache.set('site', self)

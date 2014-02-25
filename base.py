@@ -11,51 +11,31 @@ import jinja2
 import os, logging
 
 from functools import wraps
-#from webapp2_extras import i18n#need babel package //NA
 import gettext
+from model import *
 
-#def requires_admin(method)://requires_admin
-#    @wraps(method)
-#    def wrapper(self, *args, **kwargs):
-#        if not self.is_login:
-#            self.redirect(users.create_login_url(self.request.uri))
-#            return
-#        elif not self.is_admin:
-#            return self.error(403)
-#        else:
-#            return method(self, *args, **kwargs)
-#    return wrapper
+from datetime import datetime, timedelta
 
 logging.info('base loaded ...')
 
-#memcatch JINJA_ENVIRONMENT
+#JINJA_ENVIRONMENT = memcache.get('JINJA_ENVIRONMENT')
+#memcache.set(key='JINJA_ENVIRONMENT', value='JINJA_ENVIRONMENT')
+class BaseRequestHandler(webapp2.RequestHandler):
+    @webapp2.cached_property
+    def get_env(self):
+        yunzlog_lang = self.request.cookies.get("yunzlog_lang")
+        if not yunzlog_lang:
+            #could quary defalut language from setting module
+            #yunzlog_lang = Setting.query().fetch()[0].default_lang
+            yunzlog_lang = 'zh_CN'
+            self.response.set_cookie('yunzlog_lang', 'zh_CN', expires=(datetime.now()+timedelta(days=30)), secure=False)
 
-JINJA_ENVIRONMENT = memcache.get('JINJA_ENVIRONMENT')
-logging.info('memcache.get')
-if not JINJA_ENVIRONMENT:
-    logging.info('memcache.get = not')
-
-    JINJA_ENVIRONMENT = jinja2.Environment(
+        JINJA_ENVIRONMENT = jinja2.Environment(
         loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__),'templates','default')),
         extensions=['jinja2.ext.autoescape','jinja2.ext.i18n'], autoescape=True)
-#        lang = self.request.GET.get('locale', 'zh_CN')
 
-#http://jinja.pocoo.org/docs/extensions/
-#http://docs.python.org/2/library/gettext.html
-#the one way
-#gettext.install('zh_CN', 'locale', unicode=True)
-#tr = gettext.translation('messages', 'locale', languages=['zh_CN'])#languages as list forms
-#tr.install(True)#install _() function,***
-#another way
-    tr=gettext.translation('messages','locale',fallback=True,languages=['zh_CN'],codeset='utf-8')
-    tr.install(unicode=True, names=['gettext', 'ngettext'])
+        tr=gettext.translation('messages','locale',fallback=True,languages=[yunzlog_lang],codeset='utf-8')
+        tr.install(unicode=True, names=['gettext', 'ngettext'])
 
-#the same part
-    JINJA_ENVIRONMENT.install_gettext_translations(tr)
-    logging.info('before set')
-    memcache.set(key='JINJA_ENVIRONMENT', value='JINJA_ENVIRONMENT')
-    logging.info('after set')
-class BaseRequestHandler(webapp2.RequestHandler):
-#    def get(self):
-#        self.request.cookies.get('abc')
-    pass
+        JINJA_ENVIRONMENT.install_gettext_translations(tr)
+        return JINJA_ENVIRONMENT

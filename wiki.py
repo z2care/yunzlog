@@ -16,7 +16,7 @@ from model import *
 from base import *
 
 #START: RenderPage
-class WikiPage(webapp2.RequestHandler):
+class WikiPage(BaseRequestHandler):
     def get(self):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
@@ -26,7 +26,7 @@ class WikiPage(webapp2.RequestHandler):
             'wiki_active': 'active',
             'baseurl': baseurl,
         }
-        template = JINJA_ENVIRONMENT.get_template('wiki.html')
+        template = self.get_env.get_template('wiki.html')
         self.response.write(template.render(template_values))
         
 #END: RenderPage

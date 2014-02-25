@@ -27,7 +27,7 @@ handlers:
 - url: /statics
   static_dir: statics
 
-- url: /admin|admin/.*
+- url: /admin|/admin/.*
   script: admin.app
   login: admin
 
