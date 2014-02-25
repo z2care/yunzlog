@@ -39,6 +39,8 @@ class AdminPage(webapp2.RequestHandler):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
 
+        action=self.request.param.get('action')
+
         template_values = {
                 'admin_name': admin_name,
                 'admin_logout_url': admin_logout_url,
@@ -57,25 +59,27 @@ class AdminPage(webapp2.RequestHandler):
 
     def post(self,item=None):
         logging.info('post arrived!')
-        
-        if users.get_current_user():
-            author = users.get_current_user()
-        else:
-            author = users.User("anonymous@xxx.com")
+        action=self.request.get('action')
+        if action == 'add':
+	          if users.get_current_user():
+	              author = users.get_current_user()
+	          else:
+	              author = users.User("anonymous@xxx.com")
         
         title=self.request.get('title')
 
         timestamp=datetime.now()
         archive=timestamp.strftime('%Y%m')
-        logging.info('archive='+archive)
         pageid=timestamp.strftime('%d%H%M')
-        url=os.path.join('/blog', archive, pageid).replace('\\','/')
+        url=os.path.join('/article', archive, pageid).replace('\\','/')
 
         slug=self.request.get('slug')
 
         content=self.request.get("content")
-        summary=content[:10]
-
+#        summary=content[:10]
+        document = lxml.html.document_fromstring(content)
+        summary = document.text_content()[:50]+'...'
+#if action == add(new) edit(not published) udpdate(published)
         article=Article(url=url, title=title, author=author, summary=summary,type='Origin',
                         category='Life', content=content, date=timestamp, archive=archive, 
                         pageid=pageid, slug=slug)

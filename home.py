@@ -4,11 +4,13 @@ Created on 2013-12-12
 @author: zhangzhi
 '''
 
-from google.appengine.api import users, memcache
+from google.appengine.api import urlfetch, users, memcache
 from google.appengine.ext import ndb
 
 import webapp2
 import jinja2
+from lxml import etree
+from lxml.html.clean import Cleaner
 
 import os, logging
 from datetime import *
@@ -21,7 +23,8 @@ logging.info('home load...')
 
 #START: RenderPage
 class HomePage(webapp2.RequestHandler):
-    def get(self):
+    def get(self): 
+
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
 
@@ -42,7 +45,7 @@ class HomePage(webapp2.RequestHandler):
         self.response.set_cookie('show_alert', 'value_zz', 
           expires=(datetime.now()+timedelta(days=100)), secure=False)
         self.response.write(template.render(template_values))
-        
+
 #END: RenderPage
 
 # START: Frame

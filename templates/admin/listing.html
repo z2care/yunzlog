@@ -30,7 +30,7 @@
                     <th>{{_("Author")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Read")}} <i class="fa fa-sort"></i></th>
 					<th>{{_("Date")}} <i class="fa fa-sort"></i></th>
-					<th>{{_("Edit")}} <i class="fa fa-sort"></i></th>
+					<th>{{_("Operate")}}<i class="fa fa-sort"></i></th>
                   </tr>
                 </thead>
                 <tbody>				  
@@ -42,7 +42,7 @@
 					<td>{{article.author}}</td>
 					<td>{{article.read}}</td>
 					<td>{{article.date}}</td>
-					<td>Edit Button</td>
+					<td><a href="/admin/{{article.url}}?action=edit">{{_("Edit")}}</td>
 				  </tr>
 				{% endfor %}
                 </tbody>

@@ -58,10 +58,10 @@
 					</div>
 				</div>
 			</div>
-
-			<button type="submit" class="btn btn-default">Submit Button</button>
-			<button type="reset" class="btn btn-default">Reset Button</button>  
-        </form>
+			<input type="hidden" name="action" value="{{action}}">
+			<button type="submit" name="button" value="Save" class="btn btn-default">{{_("Save Draft")}}</button>
+			<button type="submit" name="button" value="Pub" class="btn btn-default">{{_("Pub Article")}}</button>  
+      </form>
 		<hr>
 		<p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstrap's Form Documentation</a>.</p>
         </div><!-- /.row -->

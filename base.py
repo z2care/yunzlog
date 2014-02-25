@@ -53,7 +53,7 @@ if not JINJA_ENVIRONMENT:
 #the same part
     JINJA_ENVIRONMENT.install_gettext_translations(tr)
     logging.info('before set')
-    memcache.set(key='JINJA_ENVIRONMENT', value='abc')
+    memcache.set(key='JINJA_ENVIRONMENT', value='JINJA_ENVIRONMENT')
     logging.info('after set')
 class BaseRequestHandler(webapp2.RequestHandler):
 #    def get(self):
