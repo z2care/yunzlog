@@ -39,7 +39,7 @@ class AdminPage(webapp2.RequestHandler):
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
 
-        action=self.request.param.get('action')
+        action=self.request.get('action')
 
         template_values = {
                 'admin_name': admin_name,
