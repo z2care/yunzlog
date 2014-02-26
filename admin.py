@@ -141,10 +141,38 @@ class ListingPage(webapp2.RequestHandler):
 
         self.response.write(template.render(template_values))
 
+class UploadPage(webapp2.RequestHandler):
+    def post(self,type=None):
+        type=self.request.get('type')
+        file=self.request.get('upload')
+        #name, suffix = file.name.split('.',1)
+        #mimetype = file.content_type
+        #content=file.read()#could resize pic using PIL lib
+        #image = Image(name=name,suffix=suffix,mimetype=mimetype,content=content)
+        #logging.info('mimetype='+mimetype)
+        #logging.info('name='+name+' suffix='+suffix)
+        #logging.info('content='+content)
+
+        '''
+        #step 2:redirect to picture tab,then fill pic in blank frame
+            funcNum = request.GET.get('CKEditorFuncNum')
+            url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
+            alt_msg = '' #server alert this message in dialog
+            res = '<script type="text/javascript">'
+            res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)
+            res += '</script>'
+            #ok go exec
+            response = HttpResponse(res)
+            return response
+        '''
+        self.response.write('<b>type</b>')
+
+
 # START: Frame
 app = webapp2.WSGIApplication([('/admin', AdminPage),
                                ('/admin/listing',ListingPage),
                                ('/admin/setting',SettingPage),
+                               ('/admin/upload',UploadPage),
                                ('/admin/(.*)',AdminPage),
                                   ])
 # END: Frame

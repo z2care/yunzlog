@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
     config.language = 'zh-cn'; //language
     config.uiColor = '#FFFFFF'; //bgcolor 
-    config.width = '150%'; //width
+    config.width = '100%'; //width
     config.height = '300px'; //height
     config.skin = 'moono';//skin
     config.toolbar = 'Full';//Basic Standard Full
@@ -40,4 +40,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	// Custom by zarey
+	config.filebrowserImageUploadUrl = '/admin/upload?type=image';
 };
