@@ -36,3 +36,7 @@ class Setting(ndb.Model):
     def put(self):
       self.set_cache()
       ndb.Model.put(self)
+
+class Image(ndb.Model):
+    imgdata = ndb.BlobProperty()
+    imgname = ndb.StringProperty()

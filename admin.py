@@ -142,30 +142,63 @@ class ListingPage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 class UploadPage(webapp2.RequestHandler):
+    def get(self):
+        picname = self.request.get('picname')
+        image = Image.query(Image.imgname==title).fetch(1)
+        if (image and image.imgdata):
+            self.response.headers['Content-Type'] = 'image/jpeg'
+            self.response.out.write(image.imgdata)
+        else:
+            self.redirect('/statics/img/noimage.jpg')
+
     def post(self,type=None):
-        type=self.request.get('type')
-        file=self.request.get('upload')
-        #name, suffix = file.name.split('.',1)
-        #mimetype = file.content_type
-        #content=file.read()#could resize pic using PIL lib
-        #image = Image(name=name,suffix=suffix,mimetype=mimetype,content=content)
-        #logging.info('mimetype='+mimetype)
-        #logging.info('name='+name+' suffix='+suffix)
-        #logging.info('content='+content)
 
         '''
-        #step 2:redirect to picture tab,then fill pic in blank frame
-            funcNum = request.GET.get('CKEditorFuncNum')
-            url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
-            alt_msg = '' #server alert this message in dialog
-            res = '<script type="text/javascript">'
-            res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)
-            res += '</script>'
-            #ok go exec
-            response = HttpResponse(res)
-            return response
+        {
+            'disposition_options':{'filename': 'note.txt', 'name': 'upload'},
+            'name': u'upload',
+            'fp': <LimitedLengthFile(<cStringIO.StringI object at 0x024714E8>, maxlen=914)>,
+            'done': 1,
+            'type_options': {},
+            'innerboundary': '',
+            'length': -1,
+            'headers': <rfc822.Message instance at 0x02646FD0>,
+            'keep_blank_values': True,
+            'strict_parsing': 0,
+            'file': <cStringIO.StringO object at 0x0264A3C0>,
+            'outerboundary': '----WebKitFormBoundaryqb70smDhhzVi0npl',
+            'type': 'text/plain',
+            'qs_on_post': None,
+            'disposition': 'form-data',
+            'list': None,
+            'filename': u'note.txt',
+            '_FieldStorage__file': <cStringIO.StringO object at 0x0264A3C0>
+        }
         '''
-        self.response.write('<b>type</b>')
+
+        #FieldStorage(u'upload', u'IMG_0375.jpg')
+        #have data        
+        fileinfo1=self.request.POST['upload']#return info above
+        fileinfo2=self.request.POST.get('upload')#the same to above
+        logging.info(fileinfo.__dict__)#file(data) type(mimetype) name(upload) filename(abc.jpg)
+
+        filedata=self.request.get('upload') #ok =db.Blob(image)
+        logging.info(filedata.__dict__)
+        
+        #content=filedata.read()#could resize pic using PIL lib
+        
+        #step 2:redirect to picture tab,then fill pic in blank frame
+        funcNum = request.GET.get('CKEditorFuncNum')
+        url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
+        alt_msg = '' #server alert this message in dialog
+        res = '<script type="text/javascript">'
+        res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)
+        res += '</script>'
+        #ok go exec
+        response = HttpResponse(res)
+        return response
+        
+        self.response.write('%s<br>%s<br>%s<br>'%(name,surfix,mimetype))
 
 
 # START: Frame
