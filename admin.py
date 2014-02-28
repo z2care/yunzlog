@@ -5,6 +5,7 @@ Created on 2013-12-12
 '''
 
 from google.appengine.api import users
+from google.appengine.ext.webapp import blobstore_handlers
 
 import webapp2
 import jinja2
@@ -175,30 +176,34 @@ class UploadPage(webapp2.RequestHandler):
             '_FieldStorage__file': <cStringIO.StringO object at 0x0264A3C0>
         }
         '''
-
-        #FieldStorage(u'upload', u'IMG_0375.jpg')
+        #upload_files = self.get_uploads('upload')  # 'file' is file upload field in the form
+        #post.keys FieldStorage(u'upload', u'IMG_0375.jpg')
         #have data        
         fileinfo1=self.request.POST['upload']#return info above
         fileinfo2=self.request.POST.get('upload')#the same to above
-        logging.info(fileinfo.__dict__)#file(data) type(mimetype) name(upload) filename(abc.jpg)
+        #logging.info(fileinfo1.__dict__)#file(data) type(mimetype) name(upload) filename(abc.jpg) value(filedata)
 
         filedata=self.request.get('upload') #ok =db.Blob(image)
-        logging.info(filedata.__dict__)
-        
+        #logging.info(filedata.__dict__)
+
+        img = Image(imgname='test',imgdata=filedata)
+        key=img.put()
+
+        #value is also have when enctype="multipart/form-data"
         #content=filedata.read()#could resize pic using PIL lib
         
         #step 2:redirect to picture tab,then fill pic in blank frame
-        funcNum = request.GET.get('CKEditorFuncNum')
+        funcNum = self.request.GET.get('CKEditorFuncNum')
         url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
         alt_msg = '' #server alert this message in dialog
         res = '<script type="text/javascript">'
         res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)
         res += '</script>'
         #ok go exec
-        response = HttpResponse(res)
-        return response
+        #response = HttpResponse(res)
+        #return response
         
-        self.response.write('%s<br>%s<br>%s<br>'%(name,surfix,mimetype))
+        self.response.write(res)
 
 
 # START: Frame
