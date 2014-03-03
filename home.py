@@ -36,7 +36,6 @@ class HomePage(BaseRequestHandler):
 
         template = self.get_env.get_template('home.html')
         self.response.write(template.render(template_values))
-
 #END: RenderPage
 
 # START: Frame

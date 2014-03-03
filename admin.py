@@ -143,15 +143,6 @@ class ListingPage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 class UploadPage(webapp2.RequestHandler):
-    def get(self):
-        picname = self.request.get('picname')
-        image = Image.query(Image.imgname==title).fetch(1)
-        if (image and image.imgdata):
-            self.response.headers['Content-Type'] = 'image/jpeg'
-            self.response.out.write(image.imgdata)
-        else:
-            self.redirect('/statics/img/noimage.jpg')
-
     def post(self,type=None):
 
         '''
@@ -194,7 +185,8 @@ class UploadPage(webapp2.RequestHandler):
         
         #step 2:redirect to picture tab,then fill pic in blank frame
         funcNum = self.request.GET.get('CKEditorFuncNum')
-        url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
+        #url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
+        url = ''
         alt_msg = '' #server alert this message in dialog
         res = '<script type="text/javascript">'
         res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)

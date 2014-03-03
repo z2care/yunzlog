@@ -28,10 +28,20 @@ class GalleryPage(BaseRequestHandler):
         }
         template = self.get_env.get_template('gallery.html')
         self.response.write(template.render(template_values))
-        
+
+class MediaPage(webapp2.RequestHandler):
+    def get(self,itemid=None):
+        media = Media.query(Media.name==itemid).fetch(1)
+        if (media and media[0].data):
+            self.response.headers['Content-Type'] = media.type
+            self.response.out.write(media[0].data)
+#        else:
+#            self.redirect('/statics/img/noimage.jpg')
+
 #END: RenderPage
 
 # START: Frame
-app = webapp2.WSGIApplication([('/gallery', GalleryPage)
+app = webapp2.WSGIApplication([('/gallery', GalleryPage),
+                               ('/media/(.*),',MediaPage),
                                ], debug=True)
 # END: Frame
