@@ -78,8 +78,9 @@ class AdminPage(webapp2.RequestHandler):
 
         content=self.request.get("content")
 #        summary=content[:10]
-        document = lxml.html.document_fromstring(content)
-        summary = document.text_content()[:50]+'...'
+        #document = lxml.html.document_fromstring(content)
+        #summary = document.text_content()[:50]+'...'
+        summary='...'
 #if action == add(new) edit(not published) udpdate(published)
         article=Article(url=url, title=title, author=author, summary=summary,type='Origin',
                         category='Life', content=content, date=timestamp, archive=archive, 
@@ -143,58 +144,19 @@ class ListingPage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 class UploadPage(webapp2.RequestHandler):
-    def post(self,type=None):
-
-        '''
-        {
-            'disposition_options':{'filename': 'note.txt', 'name': 'upload'},
-            'name': u'upload',
-            'fp': <LimitedLengthFile(<cStringIO.StringI object at 0x024714E8>, maxlen=914)>,
-            'done': 1,
-            'type_options': {},
-            'innerboundary': '',
-            'length': -1,
-            'headers': <rfc822.Message instance at 0x02646FD0>,
-            'keep_blank_values': True,
-            'strict_parsing': 0,
-            'file': <cStringIO.StringO object at 0x0264A3C0>,
-            'outerboundary': '----WebKitFormBoundaryqb70smDhhzVi0npl',
-            'type': 'text/plain',
-            'qs_on_post': None,
-            'disposition': 'form-data',
-            'list': None,
-            'filename': u'note.txt',
-            '_FieldStorage__file': <cStringIO.StringO object at 0x0264A3C0>
-        }
-        '''
-        #upload_files = self.get_uploads('upload')  # 'file' is file upload field in the form
-        #post.keys FieldStorage(u'upload', u'IMG_0375.jpg')
-        #have data        
-        fileinfo1=self.request.POST['upload']#return info above
-        fileinfo2=self.request.POST.get('upload')#the same to above
-        #logging.info(fileinfo1.__dict__)#file(data) type(mimetype) name(upload) filename(abc.jpg) value(filedata)
-
-        filedata=self.request.get('upload') #ok =db.Blob(image)
-        #logging.info(filedata.__dict__)
-
-        img = Image(imgname='test',imgdata=filedata)
-        key=img.put()
-
-        #value is also have when enctype="multipart/form-data"
-        #content=filedata.read()#could resize pic using PIL lib
+    def post(self,type=None):       
+        fileinfo=self.request.POST['upload']
+        media = Media(name=fileinfo.filename,data=fileinfo.value,type=fileinfo.type)
+        key=media.put()
         
         #step 2:redirect to picture tab,then fill pic in blank frame
         funcNum = self.request.GET.get('CKEditorFuncNum')
-        #url = get_config()['SERVER_URL'] + "/attachment/" + str(key)
-        url = ''
-        alt_msg = '' #server alert this message in dialog
+        logging.info(self.request.GET.__dict__)
+        url = "/gallery/" + key.urlsafe()
+        alt_msg = 'success!zz!' #server alert this message in dialog
         res = '<script type="text/javascript">'
-        res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum,url,alt_msg)
-        res += '</script>'
-        #ok go exec
-        #response = HttpResponse(res)
-        #return response
-        
+        res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum, url, alt_msg)
+        res += '</script>'        
         self.response.write(res)
 
 

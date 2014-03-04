@@ -30,18 +30,18 @@ class GalleryPage(BaseRequestHandler):
         self.response.write(template.render(template_values))
 
 class MediaPage(webapp2.RequestHandler):
-    def get(self,itemid=None):
-        media = Media.query(Media.name==itemid).fetch(1)
-        if (media and media[0].data):
+    def get(self,keyid=None):
+        media = Media.Key(keyid).get()
+        if (media and media.data):
             self.response.headers['Content-Type'] = media.type
-            self.response.out.write(media[0].data)
-#        else:
-#            self.redirect('/statics/img/noimage.jpg')
+            self.response.out.write(media.data)
+        else:
+            self.redirect('/statics/img/noimage.jpg')
 
 #END: RenderPage
 
 # START: Frame
 app = webapp2.WSGIApplication([('/gallery', GalleryPage),
-                               ('/media/(.*),',MediaPage),
+                               ('/gallery/(.*),',MediaPage),
                                ], debug=True)
 # END: Frame

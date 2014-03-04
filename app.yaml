@@ -40,7 +40,7 @@ handlers:
 - url: /project
   script: project.app
 
-- url: /gallery
+- url: /gallery|/gallery/.*
   script: gallery.app
 
 - url: /about
