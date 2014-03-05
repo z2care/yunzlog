@@ -21,6 +21,11 @@ logging.info('base loaded ...')
 #JINJA_ENVIRONMENT = memcache.get('JINJA_ENVIRONMENT')
 #memcache.set(key='JINJA_ENVIRONMENT', value='JINJA_ENVIRONMENT')
 class BaseRequestHandler(webapp2.RequestHandler):
+
+    base_values = {
+            'baseurl': "https://"+os.environ['HTTP_HOST'],
+    }
+
     @webapp2.cached_property
     def get_env(self):
         yunzlog_lang = self.request.cookies.get("yunzlog_lang")

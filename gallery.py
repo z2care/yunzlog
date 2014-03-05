@@ -15,9 +15,12 @@ import os, logging
 from model import *
 from base import *
 
+logging.info('gallery load...')
+
 #START: RenderPage
 class GalleryPage(BaseRequestHandler):
     def get(self):
+        logging.info('gallerypage arrive')
         domain=os.environ['HTTP_HOST']
         baseurl="https://"+domain
         
@@ -29,11 +32,12 @@ class GalleryPage(BaseRequestHandler):
         template = self.get_env.get_template('gallery.html')
         self.response.write(template.render(template_values))
 
-class MediaPage(webapp2.RequestHandler):
-    def get(self,keyid=None):
-        media = Media.Key(keyid).get()
+class MediaPage(BaseRequestHandler):
+    def get(self, keyid=None):
+        logging.info('mediapage arrive')
+        media = ndb.Key('Media',int(keyid)).get()
         if (media and media.data):
-            self.response.headers['Content-Type'] = media.type
+            self.response.headers['Content-Type'] = str(media.type)
             self.response.out.write(media.data)
         else:
             self.redirect('/statics/img/noimage.jpg')
@@ -42,6 +46,6 @@ class MediaPage(webapp2.RequestHandler):
 
 # START: Frame
 app = webapp2.WSGIApplication([('/gallery', GalleryPage),
-                               ('/gallery/(.*),',MediaPage),
+                               ('/gallery/(.*)',MediaPage),
                                ], debug=True)
 # END: Frame

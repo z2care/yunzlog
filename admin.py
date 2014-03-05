@@ -5,7 +5,6 @@ Created on 2013-12-12
 '''
 
 from google.appengine.api import users
-from google.appengine.ext.webapp import blobstore_handlers
 
 import webapp2
 import jinja2
@@ -41,12 +40,15 @@ class AdminPage(webapp2.RequestHandler):
         baseurl="https://"+domain
 
         action=self.request.get('action')
+        if not action:
+          action = 'add'
 
         template_values = {
                 'admin_name': admin_name,
                 'admin_logout_url': admin_logout_url,
                 'author':user.nickname(),
-                'date':datetime.now()
+                'date':datetime.now(),
+                'action':action
         }
 
         if item:
@@ -58,35 +60,7 @@ class AdminPage(webapp2.RequestHandler):
 
         self.response.write(template.render(template_values))
 
-    def post(self,item=None):
-        logging.info('post arrived!')
-        action=self.request.get('action')
-        if action == 'add':
-	          if users.get_current_user():
-	              author = users.get_current_user()
-	          else:
-	              author = users.User("anonymous@xxx.com")
-        
-        title=self.request.get('title')
 
-        timestamp=datetime.now()
-        archive=timestamp.strftime('%Y%m')
-        pageid=timestamp.strftime('%d%H%M')
-        url=os.path.join('/article', archive, pageid).replace('\\','/')
-
-        slug=self.request.get('slug')
-
-        content=self.request.get("content")
-#        summary=content[:10]
-        #document = lxml.html.document_fromstring(content)
-        #summary = document.text_content()[:50]+'...'
-        summary='...'
-#if action == add(new) edit(not published) udpdate(published)
-        article=Article(url=url, title=title, author=author, summary=summary,type='Origin',
-                        category='Life', content=content, date=timestamp, archive=archive, 
-                        pageid=pageid, slug=slug)
-        article.put()
-        self.redirect('/admin/listing')
 #END: RenderPage
 
 class SettingPage(webapp2.RequestHandler):
@@ -151,20 +125,78 @@ class UploadPage(webapp2.RequestHandler):
         
         #step 2:redirect to picture tab,then fill pic in blank frame
         funcNum = self.request.GET.get('CKEditorFuncNum')
-        logging.info(self.request.GET.__dict__)
-        url = "/gallery/" + key.urlsafe()
+        url = "/gallery/" + str(key.integer_id())
         alt_msg = 'success!zz!' #server alert this message in dialog
         res = '<script type="text/javascript">'
         res += 'window.parent.CKEDITOR.tools.callFunction(%s,"%s","%s");' % (funcNum, url, alt_msg)
         res += '</script>'        
         self.response.write(res)
 
+class ArticlePage(webapp2.RequestHandler):
+    def get(self, archive=None, postid=None):
+        user = users.get_current_user()
+        admin_name = user.nickname()
+        admin_logout_url = users.create_logout_url('/')
+
+        action=self.request.get('action')# !!!!!got param action failed
+        if not action:
+            action = 'add'
+            article = None
+        elif action == 'edit':
+            article = Article.query(Article.url=='/article/'+archive+'/'+postid).fetch()
+
+        template_values = {
+                'admin_name': admin_name,
+                'admin_logout_url': admin_logout_url,
+                'author':user.nickname(),
+                'date':datetime.now(),
+                'action':action,
+                'article':article,
+        }
+
+        template_values.update({'article_active': 'active','admin_title':'article'})
+        template = JINJA_ENVIRONMENT.get_template('article.html')
+
+        self.response.write(template.render(template_values))
+
+    def post(self,item=None):
+        logging.info('post arrived!')
+        action=self.request.get('action')
+        if action == 'add':
+              if users.get_current_user():
+                  author = users.get_current_user()
+              else:
+                  author = users.User("anonymous@xxx.com")
+
+        title=self.request.get('title')
+
+        timestamp=datetime.now()
+        archive=timestamp.strftime('%Y%m')
+        pageid=timestamp.strftime('%d%H%M')
+        url=os.path.join('/article', archive, pageid).replace('\\','/')
+
+        slug=self.request.get('slug')
+
+        content=self.request.get("content")
+#        summary=content[:10]
+        #document = lxml.html.document_fromstring(content)
+        #summary = document.text_content()[:50]+'...'
+        summary=content
+#if action == add(new) edit(not published) udpdate(published)
+        article=Article(url=url, title=title, author=author, summary=summary,type='Origin',
+                        category='Life', content=content, date=timestamp, archive=archive, 
+                        pageid=pageid, slug=slug)
+        article.put()
+        self.redirect('/admin/listing')
+
 
 # START: Frame
 app = webapp2.WSGIApplication([('/admin', AdminPage),
+                               ('/admin/upload',UploadPage),
                                ('/admin/listing',ListingPage),
                                ('/admin/setting',SettingPage),
-                               ('/admin/upload',UploadPage),
+                               ('/admin/article',ArticlePage),
+                               ('/admin/article/(?P<archive>\d{6})/(?P<pageid>\d{6})',ArticlePage),
                                ('/admin/(.*)',AdminPage),
                                   ])
 # END: Frame
