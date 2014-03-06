@@ -16,7 +16,7 @@ import os, logging
 from datetime import *
 
 from model import *
-from base import *
+from base import BaseRequestHandler
 
 logging.info('home load...')
 
@@ -24,16 +24,11 @@ logging.info('home load...')
 #START: RenderPage
 class HomePage(BaseRequestHandler):
     def get(self): 
-
-        domain=os.environ['HTTP_HOST']
-        baseurl="https://"+domain
-
         template_values = {
             'page_title': 'Home',
             'home_active': 'active',
-            'baseurl': baseurl,
         }
-
+        template_values.update(BaseRequestHandler.base_values)
         template = self.get_env.get_template('home.html')
         self.response.write(template.render(template_values))
 #END: RenderPage

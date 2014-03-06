@@ -15,49 +15,48 @@
           </div>
         </div><!-- /.row -->
 
-        <form role="form" action="/admin/article" method="post">
-			<div class="row">
-			  <div class="col-lg-6">
-				  <div class="form-group">
-					  <label>Blog Title</label>
-					  <input class="form-control" name="title" placeholder="enter title ...">
-				  </div>
-			  </div>
-			  <div class="col-lg-2" class="form-group">
-				<label>Type</label>
-				<select class="form-control" name="type">
-				  <option>Origin</option>
-				  <option>Translate</option>
-				  <option>Reference</option>
-				</select>
-			  </div>
-			</div>
+        <form role="form" action="/admin/editing/article" method="post">
             <div class="row">
-			  <div class="col-lg-8">
-				  <div class="form-group">
-					  <input class="form-control" name="slug" placeholder="enter slug ...">
-				  </div>
-			  </div>
-			</div>
+              <div class="col-lg-6">
+                  <div class="form-group">
+                      <label>Blog Title</label>
+                      <input class="form-control" name="title" placeholder="enter title ...">
+                  </div>
+              </div>
+              <div class="col-lg-2" class="form-group">
+                <label>Type</label>
+                <select class="form-control" name="type">
+                  <option>Origin</option>
+                  <option>Translate</option>
+                  <option>Reference</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+                  <div class="form-group">
+                      <input class="form-control" name="slug" placeholder="enter slug ...">
+                  </div>
+              </div>
+            </div>
 <!-------------------------->
 <!--add editor here-->
 <!-------------------------->
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="form-group">
-					  <label>Content</label>
-					  <textarea class="form-control" id="content" name="content" rows="20"></textarea>
-					  <script type="text/javascript">CKEDITOR.replace('content');
-					  </script>
-					</div>
-				</div>
-			</div>
-			<input type="hidden" name="action" value="{{action}}">
-			<button type="submit" name="button" value="Save" class="btn btn-default">{{_("Save Draft")}}</button>
-			<button type="submit" name="button" value="Pub" class="btn btn-default">{{_("Pub Article")}}</button>  
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="form-group">
+                      <label>Content</label>
+                      <textarea class="form-control" id="content" name="content" rows="20"></textarea>
+                      <script type="text/javascript">CKEDITOR.replace('content');
+                      </script>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="button" value="Save" class="btn btn-default">{{_("Save Draft")}}</button>
+            <button type="submit" name="button" value="Pub" class="btn btn-default">{{_("Pub Article")}}</button>  
       </form>
-		<hr>
-		<p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstrap's Form Documentation</a>.</p>
+        <hr>
+        <p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstrap's Form Documentation</a>.</p>
         </div><!-- /.row -->
       </div><!-- /#page-wrapper -->
 {% endblock %}

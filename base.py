@@ -44,3 +44,7 @@ class BaseRequestHandler(webapp2.RequestHandler):
 
         JINJA_ENVIRONMENT.install_gettext_translations(tr)
         return JINJA_ENVIRONMENT
+
+    def error(self,errno=404):
+        template = self.get_env.get_template('error404.html')
+        self.response.write(template.render())

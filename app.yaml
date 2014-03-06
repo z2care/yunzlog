@@ -31,7 +31,7 @@ handlers:
   script: admin.app
   login: admin
 
-- url: /blog|/blog/.*|/article/.*
+- url: /blog|/blog/.*
   script: blog.app
 
 - url: /wiki

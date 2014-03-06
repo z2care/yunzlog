@@ -13,8 +13,8 @@
     <!-- Add custom CSS here -->
     <link href="/statics/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="/statics/font-awesome/css/font-awesome.min.css">
-	<!-- Add editor CSS and JS here -->
-	<script type="text/javascript" src="/statics/ckeditor/ckeditor.js"></script>
+    <!-- Add editor CSS and JS here -->
+    <script type="text/javascript" src="/statics/ckeditor/ckeditor.js"></script>
 
   </head>
 
@@ -38,31 +38,32 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-		    <li class="{{article_active}}"><a href="/admin/article"><i class="fa fa-edit"></i> {{_("Article")}}</a></li>
-			<li class="{{listing_active}}"><a href="/admin/listing"><i class="fa fa-table"></i> {{_("Listing")}}</a></li>
-			<li class="{{comments_active}}"><a href="/admin/comments"><i class="fa fa-dashboard"></i> {{_("Comments")}}</a></li>
-			<li class="{{category_active}}"><a href="/admin/category"><i class="fa fa-font"></i> {{_("Category")}}</a></li>
-			<li class="{{settings_active}}"><a href="/admin/settings"><i class="fa fa-wrench"></i> {{_("Settings")}}</a></li>
+            <li class="{{main_active}}"><a href="/admin/main"><i class="fa fa-edit"></i> {{_("Main")}}</a></li>
 
-            <!--<li class="{{dashboard_active}}"><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="{{charts_active}}"><a href="/admin/charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
-            <li class="{{tables_active}}"><a href="/admin/tables"><i class="fa fa-table"></i> Tables</a></li>
-            <li class="{{forms_active}}"><a href="/admin/forms"><i class="fa fa-edit"></i> Forms</a></li>
-            <li class="{{typography_active}}"><a href="/admin/typography"><i class="fa fa-font"></i> Typography</a></li>
-            <li class="{{elements_active}}"><a href="/admin/elements"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
-            <li class="{{grid_active}}"><a href="/admin/grid"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
-            <li class="{{blank_active}}"><a href="/admin/blank-page"><i class="fa fa-file"></i> Blank Page</a></li>-->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
+            <li class="dropdown {{editing_active}}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> {{_("Editing")}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Dropdown Item</a></li>
-                <li><a href="#">Another Item</a></li>
-                <li><a href="#">Third Item</a></li>
-                <li><a href="#">Last Item</a></li>
+                <li><a href="/admin/editing/article">{{_("Article")}}</a></li>
+                <li><a href="/admin/editing/wiki">{{_("WiKi")}}</a></li>
               </ul>
             </li>
-          </ul>
 
+            <li class="dropdown {{listing_active}}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> {{_("Listing")}} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/listing/article">{{_("Article")}}</a></li>
+                <li><a href="/admin/listing/wiki">{{_("WiKi")}}</a></li>
+                <li><a href="/admin/listing/comment">{{_("Comment")}}</a></li>
+                <li><a href="/admin/listing/category">{{_("Category")}}</a></li>
+
+              </ul>
+            </li>
+
+            <li class="{{gallery_active}}"><a href="/admin/gallery"><i class="fa fa-font"></i> {{_("Gallery")}}</a></li>
+
+            <li class="{{setting_active}}"><a href="/admin/setting"><i class="fa fa-wrench"></i> {{_("Setting")}}</a></li>
+
+          </ul>
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown messages-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
@@ -124,8 +125,8 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
-	{% block page_wrapper %}{% endblock %}
-	</div><!-- /#wrapper -->
+    {% block page_wrapper %}{% endblock %}
+    </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
     <script src="/statics/js/jquery-1.10.2.js"></script>
@@ -138,11 +139,11 @@
     <script src="/statics/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="/statics/js/tablesorter/tables.js"></script>
     <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-	<script src="/statics/js/flot/jquery.flot.js"></script>
-	<script src="/statics/js/flot/jquery.flot.tooltip.min.js"></script>
-	<script src="/statics/js/flot/jquery.flot.resize.js"></script>
-	<script src="/statics/js/flot/jquery.flot.pie.js"></script>
-	<script src="/statics/js/flot/chart-data-flot.js"></script>
+    <script src="/statics/js/flot/jquery.flot.js"></script>
+    <script src="/statics/js/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/statics/js/flot/jquery.flot.resize.js"></script>
+    <script src="/statics/js/flot/jquery.flot.pie.js"></script>
+    <script src="/statics/js/flot/chart-data-flot.js"></script>
 
   </body>
 </html>

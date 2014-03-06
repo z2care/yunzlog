@@ -20,35 +20,40 @@
           <div class="col-lg-12">
             <h2>Contextual Classes</h2>
             <div class="table-responsive">
-			  {% if articles %}
-              <table class="table table-hover table-striped tablesorter">			  
+              {% if articles %}
+              <table class="table table-hover table-striped tablesorter">             
                 <thead>
                   <tr>
                     <th>{{_("Type")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Title")}} <i class="fa fa-sort"></i></th>
-                    <th>{{_("Url")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Slug")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Author")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Read")}} <i class="fa fa-sort"></i></th>
-					<th>{{_("Date")}} <i class="fa fa-sort"></i></th>
-					<th>{{_("Operate")}}<i class="fa fa-sort"></i></th>
+                    <th>{{_("Date")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Operate")}}<i class="fa fa-sort"></i></th>
                   </tr>
                 </thead>
-                <tbody>				  
-				{% for article in articles %}
-				  <tr class="active"><!--active,success,warning,danger,(or empty class)-->
-					<td>{{article.type}}</td>
-					<td>{{article.title}}</td>
-					<td>{{article.url}}</td>
-					<td>{{article.author}}</td>
-					<td>{{article.read}}</td>
-					<td>{{article.date}}</td>
-					<td><a href="/admin{{article.url}}?action=edit">{{_("Edit")}}</td>
-				  </tr>
-				{% endfor %}
+                <tbody>               
+                {% for article in articles %}
+                  <tr class="active"><!--active,success,warning,danger,(or empty class)-->
+                    <td>{{article.type}}</td>
+                    <td>{{article.title}}</td>
+                    <td>{{article.slug}}</td>
+                    <td>{{article.author}}</td>
+                    <td>{{article.read}}</td>
+                    <td>{{article.date}}</td>
+                    <td>
+                        <a href="/admin/editing/{{article.archive}}/{{article.postid}}?action=edit">
+                        {{_("Edit")}}</a>
+                        <a href="/admin/editing/{{article.archive}}/{{article.postid}}?action=delete">
+                        {{_("Delete")}}</a>
+                    </td>
+                  </tr>
+                {% endfor %}
                 </tbody>
-			  {% else %}
-				<b>No article,please go to <a class="alert-link" href="/admin/article">edit</a>.</b>
-			  {% endif %}
+              {% else %}
+                <b>No article,please go to <a class="alert-link" href="/admin/article">edit</a>.</b>
+              {% endif %}
               </table>
             </div>
           </div>

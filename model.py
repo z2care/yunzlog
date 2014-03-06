@@ -11,7 +11,6 @@ import logging
 logging.info('model loaded...')
 
 class Article(ndb.Model):
-    url = ndb.StringProperty()
     slug = ndb.StringProperty(default='')
     title = ndb.StringProperty(default='')
     type = ndb.StringProperty()
@@ -19,7 +18,7 @@ class Article(ndb.Model):
     author = ndb.UserProperty()
     content = ndb.TextProperty(default='')
     date = ndb.DateTimeProperty()
-    pageid = ndb.StringProperty()
+    postid = ndb.StringProperty()
     archive = ndb.StringProperty()
     read = ndb.IntegerProperty(default=0)
     summary = ndb.StringProperty(default='')
