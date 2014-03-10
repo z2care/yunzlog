@@ -26,6 +26,14 @@ tr.install(unicode=True, names=['gettext', 'ngettext'])
 
 JINJA_ENVIRONMENT.install_gettext_translations(tr)
 
+user = users.get_current_user()
+admin_name = user.nickname()
+admin_logout_url = users.create_logout_url('/')
+admin_values = {
+        'admin_name': admin_name,
+        'admin_logout_url': admin_logout_url,
+}
+
 #START: RenderPage
 class AdminPage(webapp2.RequestHandler):
     def get(self):
@@ -36,10 +44,10 @@ class AdminPage(webapp2.RequestHandler):
         admin_logout_url = users.create_logout_url('/')
 
         template_values = {
-                'admin_name': admin_name,
-                'admin_logout_url': admin_logout_url,
+            'main_active':'active',
+            'admin_title':'article',
         }
-        template_values.update({'main_active': 'active','admin_title':'article'})
+        template_values.update(admin_values)
         template = JINJA_ENVIRONMENT.get_template('blank-page.html')
 
         self.response.write(template.render(template_values))
@@ -47,9 +55,6 @@ class AdminPage(webapp2.RequestHandler):
 class ArticlePage(webapp2.RequestHandler):
     def get(self, archive=None, postid=None):
         logging.info('articlepage get arrived')
-        user = users.get_current_user()
-        admin_name = user.nickname()
-        admin_logout_url = users.create_logout_url('/')
 
         action=self.request.get('action')
         article = Article.query(Article.archive==archive,Article.postid==postid).fetch()
@@ -59,13 +64,11 @@ class ArticlePage(webapp2.RequestHandler):
             self.redirect('/admin/listing/article')
 
         template_values = {
-                'admin_name': admin_name,
-                'admin_logout_url': admin_logout_url,
                 'author':user.nickname(),
                 'date':datetime.now(),
                 'article':article,
         }
-
+        template_values.update(admin_values)
         template_values.update({'article_active': 'active','admin_title':'article'})
         template = JINJA_ENVIRONMENT.get_template('article.html')
 
@@ -103,26 +106,18 @@ class ArticlePage(webapp2.RequestHandler):
 class SettingPage(webapp2.RequestHandler):
     def get(self):
         logging.info('setting get arrived')
-        user=users.get_current_user()
-        admin_name = user.nickname()
-        admin_logout_url = users.create_logout_url('/')
-
-        domain=os.environ['HTTP_HOST']
-        baseurl="https://"+domain
 
         #articles = Setting.query().fetch()
         setting = Setting(site_title='test title for setting2')
         setting.put()
 
         template_values = {
-                'admin_name': admin_name,
-                'admin_logout_url': admin_logout_url,
                 'author':user.nickname(),
                 'date':datetime.now(),
                 'setting':setting
         }
 
-
+        template_values.update(admin_values)
         template_values.update({'setting_active': 'active','admin_title':'setting'})
         template = JINJA_ENVIRONMENT.get_template('blank-page.html')
 
@@ -131,24 +126,16 @@ class SettingPage(webapp2.RequestHandler):
 class ListPage(webapp2.RequestHandler):
     def get(self,item=None):
         logging.info('listing get arrived')
-        user = users.get_current_user()
-        admin_name = user.nickname()
-        admin_logout_url = users.create_logout_url('/')
-
-        domain=os.environ['HTTP_HOST']
-        baseurl="https://"+domain
 
         articles = Article.query().order(-Article.date).fetch(10, offset=0)
 
         template_values = {
-                'admin_name': admin_name,
-                'admin_logout_url': admin_logout_url,
                 'author':user.nickname(),
                 'date':datetime.now(),
                 'articles':articles
         }
 
-
+        template_values.update(admin_values)
         template_values.update({'listing_active': 'active','admin_title':'listing'})
         template = JINJA_ENVIRONMENT.get_template('listing.html')
 
