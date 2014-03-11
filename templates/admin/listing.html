@@ -26,7 +26,7 @@
                   <tr>
                     <th>{{_("Type")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Title")}} <i class="fa fa-sort"></i></th>
-                    <th>{{_("Slug")}} <i class="fa fa-sort"></i></th>
+                    <th>{{_("Draft")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Author")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Read")}} <i class="fa fa-sort"></i></th>
                     <th>{{_("Date")}} <i class="fa fa-sort"></i></th>
@@ -38,14 +38,14 @@
                   <tr class="active"><!--active,success,warning,danger,(or empty class)-->
                     <td>{{article.type}}</td>
                     <td>{{article.title}}</td>
-                    <td>{{article.slug}}</td>
+                    <td>{{article.draft}}</td>
                     <td>{{article.author}}</td>
                     <td>{{article.read}}</td>
                     <td>{{article.date}}</td>
                     <td>
-                        <a href="/admin/editing/{{article.archive}}/{{article.postid}}?action=edit">
+                        <a href="/admin/editing/article/{{article.archive}}/{{article.postid}}?action=edit">
                         {{_("Edit")}}</a>
-                        <a href="/admin/editing/{{article.archive}}/{{article.postid}}?action=delete">
+                        <a href="/admin/editing/article/{{article.archive}}/{{article.postid}}?action=delete">
                         {{_("Delete")}}</a>
                     </td>
                   </tr>

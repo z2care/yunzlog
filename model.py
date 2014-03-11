@@ -22,6 +22,7 @@ class Article(ndb.Model):
     archive = ndb.StringProperty()
     read = ndb.IntegerProperty(default=0)
     summary = ndb.StringProperty(default='')
+    draft = ndb.BooleanProperty(default=False)
 
 class Setting(ndb.Model):
     site_title = ndb.StringProperty()

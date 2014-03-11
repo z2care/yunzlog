@@ -19,7 +19,7 @@ from base import BaseRequestHandler
 class BlogsList(BaseRequestHandler):
     def get(self):
         #10 post per page as default
-        articles = Article.query().order(-Article.date).fetch(10, offset=0)
+        articles = Article.query(Article.draft==False).order(-Article.date).fetch(10, offset=0)
         template_values = {
             'page_title': 'Blog',
             'blog_active': 'active',

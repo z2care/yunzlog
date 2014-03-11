@@ -8,6 +8,7 @@ from google.appengine.api import users
 
 import webapp2
 import jinja2
+import lxml.html
 
 import os, logging
 from datetime import datetime
@@ -60,13 +61,13 @@ class ArticlePage(webapp2.RequestHandler):
         article = Article.query(Article.archive==archive,Article.postid==postid).fetch()
 
         if action == 'delete':
-            article.key.delete()
+            article[0].key.delete()
             self.redirect('/admin/listing/article')
 
         template_values = {
                 'author':user.nickname(),
                 'date':datetime.now(),
-                'article':article,
+                'article':article[0],
         }
         template_values.update(admin_values)
         template_values.update({'article_active': 'active','admin_title':'article'})
@@ -75,12 +76,10 @@ class ArticlePage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
     def post(self,item=None):
-        logging.info('post arrived!')
-        action=self.request.get('button')
-        if action == 'Save':#Save or Pub
-            logging.info('action=save')
-        if action == 'Pub':
-            logging.info('action=pub')
+        logging.info('articlepage post arrived!')
+        submit=self.request.get('button')
+        #if submit == 'Save':#Save or Pub
+        draft=(True if submit=='Save' else False)
 
         title=self.request.get('title')
         author = users.get_current_user()
@@ -89,17 +88,14 @@ class ArticlePage(webapp2.RequestHandler):
         archive=timestamp.strftime('%Y%m')
         postid=timestamp.strftime('%d%H%M')
 
-        slug=self.request.get('slug')
-
         content=self.request.get("content")
-#        summary=content[:10]
-        #document = lxml.html.document_fromstring(content)
-        #summary = document.text_content()[:50]+'...'
-        summary=content
+        document = lxml.html.document_fromstring(content)
+        summary = document.text_content()[:30]+'...'
+
 #if action == add(new) edit(not published) udpdate(published)
         article=Article(title=title, author=author, summary=summary,type='Origin',
                         category='Life', content=content, date=timestamp, archive=archive, 
-                        postid=postid, slug=slug)
+                        postid=postid, draft=draft)
         article.put()
         self.redirect('/admin/listing/article')
 

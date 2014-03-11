@@ -20,7 +20,7 @@
               <div class="col-lg-6">
                   <div class="form-group">
                       <label>Blog Title</label>
-                      <input class="form-control" name="title" placeholder="enter title ...">
+                      <input class="form-control" name="title" value="{% if article %}{{article.title}}{% endif %}" placeholder="enter title ...">
                   </div>
               </div>
               <div class="col-lg-2" class="form-group">
@@ -32,23 +32,26 @@
                 </select>
               </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-lg-8">
                   <div class="form-group">
                       <input class="form-control" name="slug" placeholder="enter slug ...">
                   </div>
               </div>
-            </div>
+            </div>-->
 <!-------------------------->
 <!--add editor here-->
 <!-------------------------->
             <div class="row">
                 <div class="col-lg-8">
                     <div class="form-group">
-                      <label>Content</label>
+                      <label>Content:{{article.content}}</label>
                       <textarea class="form-control" id="content" name="content" rows="20"></textarea>
-                      <script type="text/javascript">CKEDITOR.replace('content');
+                      <script type="text/javascript">
+                          CKEDITOR.replace('content');
                       </script>
+                      <!-- have never success--
+                      CKEDITOR.instances.content.setData({% if article %}{{article.content}}{% endif %});-->
                     </div>
                 </div>
             </div>
