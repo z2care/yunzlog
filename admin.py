@@ -67,7 +67,7 @@ class ArticlePage(webapp2.RequestHandler):
         template_values = {
                 'author':user.nickname(),
                 'date':datetime.now(),
-                'article':article[0],
+                'article':article,
         }
         template_values.update(admin_values)
         template_values.update({'article_active': 'active','admin_title':'article'})
@@ -88,12 +88,14 @@ class ArticlePage(webapp2.RequestHandler):
         archive=timestamp.strftime('%Y%m')
         postid=timestamp.strftime('%d%H%M')
 
+        type=self.request.get("type")
+
         content=self.request.get("content")
         document = lxml.html.document_fromstring(content)
         summary = document.text_content()[:30]+'...'
 
 #if action == add(new) edit(not published) udpdate(published)
-        article=Article(title=title, author=author, summary=summary,type='Origin',
+        article=Article(title=title, author=author, summary=summary,type=type,
                         category='Life', content=content, date=timestamp, archive=archive, 
                         postid=postid, draft=draft)
         article.put()

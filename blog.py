@@ -9,6 +9,7 @@ from google.appengine.ext import ndb
 
 import webapp2
 import jinja2
+import gettext
 
 import os, logging
 
@@ -18,12 +19,23 @@ from base import BaseRequestHandler
 #START: BlogsListPage
 class BlogsList(BaseRequestHandler):
     def get(self):
-        #10 post per page as default
-        articles = Article.query(Article.draft==False).order(-Article.date).fetch(10, offset=0)
+        #6 post per page as default
+        page=self.request.get('page')
+        page=(int(page) if page else 1)#to int 1~&
+        size=Article.query(Article.draft==False).count()#0~&
+        max=(size/6)+(0 if size%6==0 else 1)#1~&
+
+        articles = Article.query(Article.draft==False).order(-Article.date).fetch(6, offset=int(page-1)*6)
+
+        older = (None if page==max else page+1)
+        newer = (None if page==1 else page-1)
+
         template_values = {
             'page_title': 'Blog',
             'blog_active': 'active',
             'articles': articles,
+            'older':older,
+            'newer':newer,
         }
         template_values.update(BaseRequestHandler.base_values)
         template = self.get_env.get_template('bloglist.html')

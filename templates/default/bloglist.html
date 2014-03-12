@@ -17,31 +17,28 @@
       <div class="row">
 
         <div class="col-lg-8">
-		  <hr>
-		  {% if articles %}
-		    {% for article in articles %}
+          <hr>
+          {% if articles %}
+            {% for article in articles %}
 
-			  <h1><a href="/blog/{{article.archive}}/{{article.postid}}">{{article.title}}</a></h1>
+              <h1>[{{article.type}}]<a href="/blog/{{article.archive}}/{{article.postid}}">{{article.title}}</a></h1>
 
-			    <p>
-				  <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article.date}}
-				  <i class="fa fa-search"></i>{{article.read}} {{_("Read")}}
-				  <i class="fa fa-pencil">{{_("Author")}} {{article.author}}</i>
-			    </p>
+                <p>
+                  <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article.date}}
+                  <i class="fa fa-search"></i>{{article.read}} {{_("Read")}}
+                  <i class="fa fa-pencil">{{_("Author")}} {{article.author}}</i>
+                </p>
 
-			  <a href="{{article.url}}">
-			    <img src="http://placehold.it/900x300" class="img-responsive">
-			  </a>
-			  <p>{{article.summary|safe}}</p>
-			  <a class="btn btn-primary" href="{{article.url}}">{{_("Read More")}}<i class="fa fa-angle-right"></i></a>
+              <p>{{article.summary|safe}}</p>
+              <a class="btn btn-primary" href="/blog/{{article.archive}}/{{article.postid}}">{{_("Read More")}}<i class="fa fa-angle-right"></i></a>
 
-			  <hr>
-		    {% endfor %}
-		  {% endif %}
-			  <ul class="pager">
-				<li class="previous"><a href="#">&larr; Older</a></li>
-				<li class="next"><a href="#">Newer &rarr;</a></li>
-			  </ul>
+              <hr>
+            {% endfor %}
+          {% endif %}
+              <ul class="pager">
+                {% if newer %}<li class="previous"><a href="/blog?page={{newer}}">&larr;Newer </a></li>{% endif %}
+                {% if older %}<li class="next"><a href="/blog?page={{older}}"> Older&rarr;</a></li>{% endif %}
+              </ul>
 
         </div>
 
@@ -79,7 +76,7 @@
           <div class="well">
             <h4>Side Widget Well</h4>
             <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-					  <script type="text/javascript" src="http://jh.revolvermaps.com/2/1.js?i=7yhn2qa9bcu&amp;s=220&amp;m=0&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
+                      <script type="text/javascript" src="http://jh.revolvermaps.com/2/1.js?i=7yhn2qa9bcu&amp;s=220&amp;m=0&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
           </div><!-- /well -->
         </div>
       </div>
