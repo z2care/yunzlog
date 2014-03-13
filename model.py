@@ -14,7 +14,7 @@ class Article(ndb.Model):
     slug = ndb.StringProperty(default='')
     title = ndb.StringProperty(default='')
     type = ndb.StringProperty()
-    category = ndb.StringProperty()
+    tag = ndb.StringProperty(repeated=True)
     author = ndb.UserProperty()
     content = ndb.TextProperty(default='')
     date = ndb.DateTimeProperty()
