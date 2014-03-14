@@ -91,7 +91,7 @@ class ArticlePage(webapp2.RequestHandler):
         type=self.request.get("type")
 
         tag=self.request.get("tag")
-        tag=([] if tag else tag.splite(';'))
+        tag=(tag.split(';') if tag else [])
 
         content=self.request.get("content")
         document = lxml.html.document_fromstring(content)

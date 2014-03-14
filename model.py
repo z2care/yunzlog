@@ -11,7 +11,6 @@ import logging
 logging.info('model loaded...')
 
 class Article(ndb.Model):
-    slug = ndb.StringProperty(default='')
     title = ndb.StringProperty(default='')
     type = ndb.StringProperty()
     tag = ndb.StringProperty(repeated=True)
