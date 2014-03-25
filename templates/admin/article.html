@@ -46,12 +46,14 @@
                 <div class="col-lg-8">
                     <div class="form-group">
                       <label>Content</label>
+                      {% if article %}
+                          <!--{{'%r'|format(article[0].content)}}-->
+                      {% endif %}
                       <textarea class="form-control" id="content" name="content" rows="20"></textarea>
                       <script type="text/javascript">
                           CKEDITOR.replace('content');
+                          CKEDITOR.instances.content.setData("{% if article %}{{article[0].content|safe}}{% endif %}");
                       </script>
-                      <!-- have never success--
-                      CKEDITOR.instances.content.setData({% if article %}{{article.content}}{% endif %});-->
                     </div>
                 </div>
             </div>

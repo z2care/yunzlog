@@ -43,4 +43,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Custom by zarey
 	config.filebrowserImageUploadUrl = '/admin/upload?type=image';
+	config.enterMode = CKEDITOR.ENTER_BR;
 };
