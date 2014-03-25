@@ -13,7 +13,7 @@ logging.info('model loaded...')
 class Article(ndb.Model):
     title = ndb.StringProperty(default='')
     type = ndb.StringProperty()
-    tag = ndb.StringProperty(repeated=True)
+    tags = ndb.StringProperty(repeated=True)
     author = ndb.UserProperty()
     content = ndb.TextProperty(default='')
     date = ndb.DateTimeProperty()

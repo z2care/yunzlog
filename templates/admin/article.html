@@ -58,7 +58,7 @@
             <div class="row">
               <div class="col-lg-8">
                   <div class="form-group">
-                      <input class="form-control" name="tag" placeholder="enter tags splite by ';'">
+                      <input class="form-control" name="tags" value="{% if article %}{% for tag in article[0].tags %}{{tag}};{%endfor%}{% endif %}" placeholder="enter tags splite by ';'">
                   </div>
               </div>
             </div>

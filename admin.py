@@ -90,8 +90,9 @@ class ArticlePage(webapp2.RequestHandler):
 
         type=self.request.get("type")
 
-        tag=self.request.get("tag")
-        tag=(tag.split(';') if tag else [])
+        tags=self.request.get("tags")
+        tags=(tags.split(';') if tags else [])
+        tags=filter(None,tags)
 
         content=self.request.get("content")
         document = lxml.html.document_fromstring(content)
@@ -99,7 +100,7 @@ class ArticlePage(webapp2.RequestHandler):
 
 #if action == add(new) edit(not published) udpdate(published)
         article=Article(title=title, author=author, summary=summary,type=type,
-                        tag=tag, content=content, date=timestamp, archive=archive,
+                        tags=tags, content=content, date=timestamp, archive=archive,
                         postid=postid, draft=draft)
         article.put()
         self.redirect('/admin/listing/article')
