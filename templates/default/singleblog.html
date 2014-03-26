@@ -20,7 +20,7 @@
         
           <!-- the actual blog post: title/author/date/content -->
           <hr>
-          <p>{% for tag in article[0].tag %}
+          <p>{% for tag in article[0].tags %}
              	  <button type="button" class="btn btn-xs" onclick="location.href='/blog/tag/{{tag}}';">{{ tag }}</button>
              {% endfor %}
 		    <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article[0].date}}

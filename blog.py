@@ -51,8 +51,6 @@ class SingleBlog(BaseRequestHandler):
 
         article[0].read += 1
         article[0].put()
-        
-        logging.info(article[0].tag)
 
         template_values = {
             'page_title': 'Blog',
@@ -69,10 +67,10 @@ class BlogsTags(BaseRequestHandler):
         #6 post per page as default
         page=self.request.get('page')
         page=(int(page) if page else 1)#to int 1~&
-        size=Article.query(Article.draft==False, Article.tag.IN([link])).count()#0~&
+        size=Article.query(Article.draft==False, Article.tags.IN([link])).count()#0~&
         max=(size/6)+(0 if size%6==0 else 1)#1~&
 
-        articles = Article.query(Article.draft==False, Article.tag.IN([link])).order(-Article.date).fetch(6, offset=int(page-1)*6)
+        articles = Article.query(Article.draft==False, Article.tags.IN([link])).order(-Article.date).fetch(6, offset=int(page-1)*6)
 
         older = (None if page==max else page+1)
         newer = (None if page==1 else page-1)
