@@ -23,7 +23,7 @@ class AboutPage(BaseRequestHandler):
             'page_title': 'About',
             'about_active': 'active',
         }
-        template_values.update(base_values)
+        template_values.update(BaseRequestHandler.base_values)
         template = self.get_env.get_template('about.html')
         self.response.write(template.render(template_values))
         
