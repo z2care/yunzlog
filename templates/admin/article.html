@@ -52,7 +52,7 @@
                       <textarea class="form-control" id="content" name="content" rows="20"></textarea>
                       <script type="text/javascript">
                           CKEDITOR.replace('content');
-                          CKEDITOR.instances.content.setData("{% if article %}{{article[0].content|safe}}{% endif %}");
+                          CKEDITOR.instances.content.setData('{% if article %}{{article[0].content|safe}}{% endif %}');
                       </script>
                     </div>
                 </div>
