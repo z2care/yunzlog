@@ -132,8 +132,8 @@ class ListPage(webapp2.RequestHandler):
         page=self.request.get('page')
         page=(int(page) if page else 1)#to int 1~&
         size=Article.query().count()#0~&
-        max=(size/10)+(0 if size%10==0 else 1)#1~&
-        articles = Article.query().order(-Article.date).fetch(10, offset=int(page-1)*6)
+        max=(size/18)+(0 if size%18==0 else 1)#1~&
+        articles = Article.query().order(-Article.date).fetch(18, offset=int(page-1)*18)
 
         template_values = {
                 'author':user.nickname(),
