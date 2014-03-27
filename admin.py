@@ -128,13 +128,19 @@ class SettingPage(webapp2.RequestHandler):
 class ListPage(webapp2.RequestHandler):
     def get(self,item=None):
         logging.info('listing get arrived')
-
-        articles = Article.query().order(-Article.date).fetch(10, offset=0)
+        #10 post per page as default
+        page=self.request.get('page')
+        page=(int(page) if page else 1)#to int 1~&
+        size=Article.query().count()#0~&
+        max=(size/10)+(0 if size%10==0 else 1)#1~&
+        articles = Article.query().order(-Article.date).fetch(10, offset=int(page-1)*6)
 
         template_values = {
                 'author':user.nickname(),
                 'date':datetime.now(),
-                'articles':articles
+                'articles':articles,
+                'page':page,
+                'max':max,
         }
 
         template_values.update(admin_values)

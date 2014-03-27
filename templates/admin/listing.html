@@ -52,9 +52,16 @@
                 {% endfor %}
                 </tbody>
               {% else %}
-                <b>No article,please go to <a class="alert-link" href="/admin/article">edit</a>.</b>
+                <b>No article,please go to <a class="alert-link" href="/admin/editing/article">edit</a>.</b>
               {% endif %}
               </table>
+              <ul class="pagination">
+                <li class="{% if not page or page==1 %}disabled{% endif %}"><a href="/admin/listing/article?page={{page-1}}">&laquo;</a></li>
+                {% for i in range(max) %}
+                    <li class="{% if page==(i+1) %}active{% endif %}"><a href="/admin/listing/article?page={{i+1}}">{{i+1}}</a></li>
+                {% endfor %}
+                <li class="{% if not page or page==max %}disabled{% endif %}"><a href="/admin/listing/article?page={{page+1}}">&raquo;</a></li>
+              </ul>
             </div>
           </div>
 
