@@ -77,6 +77,8 @@ class ArticlePage(webapp2.RequestHandler):
 
     def post(self,item=None):
         logging.info('articlepage post arrived!')
+        #isEdit=self.request.headers['referer'].endwith('edit')
+
         submit=self.request.get('button')
         #if submit == 'Save':#Save or Pub
         draft=(True if submit=='Save' else False)
@@ -98,11 +100,15 @@ class ArticlePage(webapp2.RequestHandler):
         document = lxml.html.document_fromstring(content)
         summary = document.text_content()[:30]+'...'
 
-#if action == add(new) edit(not published) udpdate(published)
-        article=Article(title=title, author=author, summary=summary,type=type,
-                        tags=tags, content=content, date=timestamp, archive=archive,
-                        postid=postid, draft=draft)
+        keyid = self.request.get('keyid')
+        if keyid:
+            article = ndb.Key('Article',int(keyid)).get()
+        else:
+            article = Article(author=author, date=timestamp, archive=archive, postid=postid)
+
+        article.populate(title=title, summary=summary, type=type, tags=tags, content=content, draft=draft)        
         article.put()
+
         self.redirect('/admin/listing/article')
 
 class SettingPage(webapp2.RequestHandler):
