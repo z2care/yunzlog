@@ -86,10 +86,15 @@ class BlogsTags(BaseRequestHandler):
         template = self.get_env.get_template('bloglist.html')
         self.response.write(template.render(template_values))
 #END: BlogsListPage
-
+#START: BlogCommentPage
+class BlogComment(BaseRequestHandler):
+    def get(self, archive=None, postid=None):
+        self.request.get('cmtext')
+#END: BlogCommentPage
 # START: Frame
 app = webapp2.WSGIApplication([('/blog', BlogsList),
                                ('/blog/(?P<archive>\d{6})/(?P<postid>\d{6})', SingleBlog),
                                ('/blog/tag/(?P<link>\w+)', BlogsTags),
+                               ('/blog/comment', BlogComment)
                                ], debug=True)
 # END: Frame
