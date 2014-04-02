@@ -65,8 +65,8 @@
               </div>
             </div>
             <input type="hidden" value="{% if article %}{{article[0].key.id()}}{% endif %}" name="keyid"/>
-            <button type="submit" name="button" value="Save" class="btn btn-default">{{_("Save Draft")}}</button>
-            <button type="submit" name="button" value="Pub" class="btn btn-default">{{_("Pub Article")}}</button>  
+            <button type="submit" name="button" value="Save" class="btn btn-default" onclick="return confirm('save?')">{{_("Save Draft")}}</button>
+            <button type="submit" name="button" value="Pub" class="btn btn-default" onclick="return confirm('publish?')">{{_("Pub Article")}}</button>  
       </form>
         <hr>
         <p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstrap's Form Documentation</a>.</p>

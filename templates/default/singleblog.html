@@ -21,13 +21,13 @@
           <!-- the actual blog post: title/author/date/content -->
           <hr>
           <p>{% for tag in article[0].tags %}
-             	  <button type="button" class="btn btn-xs" onclick="location.href='/blog/tag/{{tag}}';">{{ tag }}</button>
+                  <button type="button" class="btn btn-xs" onclick="location.href='/blog/tag/{{tag}}';">{{ tag }}</button>
              {% endfor %}
-		    <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article[0].date}}
-			<i class="fa fa-search"></i>{{article[0].read}} {{_("Read")}}
-			<i class="fa fa-pencil">{{_("Author")}} {{article[0].author}}</i>
-		  </p>
-		  <h2>{{article[0].title}}</h2>
+          <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article[0].date}}
+          <i class="fa fa-search"></i>{{article[0].read}} {{_("Read")}}
+          <i class="fa fa-pencil">{{_("Author")}} {{article[0].author}}</i>
+          </p>
+          <h2>{{article[0].title}}</h2>
           <hr>
           <p>{{article[0].content|safe}}</p>
           <p><strong>More link:</strong></p>
@@ -42,23 +42,26 @@
           <!-- the comment box -->
           <div class="well">
             <h4>Leave a Comment:</h4>
-            <form role="form">
+            <form role="form" action="/blog/comment">
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <input type="hidden" value="{{article[0].key.id()}}" id="keyid"/>
+                <textarea class="form-control" rows="3" id="cmtext" ></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
             </form>
           </div>
           
           <hr>
 
           <!-- the comments -->
-          <h3>Start Bootstrap <small>9:41 PM on August 24, 2013</small></h3>
-          <p>This has to be the worst blog post I have ever read. It simply makes no sense. You start off by talking about space or something, then you randomly start babbling about cupcakes, and you end off with random fish names.</p>
-
-          <h3>Start Bootstrap <small>9:47 PM on August 24, 2013</small></h3>
-          <p>Don't listen to this guy, any blog with the categories 'dinosaurs, spaceships, fried foods, wild animals, alien abductions, business casual, robots, and fireworks' has true potential.</p>
-
+          <div id="comments">
+            {% if comments %}
+              {% for comment in comments %}
+                 <h3>{{ comment.author }} <small>{{comment.date}}</small></h3>
+                 <p>{{comment.content}}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
         </div>
         
         <div class="col-lg-4">
@@ -98,6 +101,27 @@
           </div><!-- /well -->
         </div>
       </div>
-
+          <script type="text/javascript">
+            $(document).ready(
+              function() {
+                $("#submit").click(
+                  function() {
+                      $.ajax({
+                        url: "/blog/comment",
+                        type: 'POST',
+                        data: {cmtext: $("#cmtext").val(),keyid: $("#keyid").val()},
+                        success: function(response) {
+                          $('#comments').append(response+"<br>");
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                          alert('status='+XMLHttpRequest.status+' state='+XMLHttpRequest.readyState+' textStatus='+textStatus);
+                        },
+                      });
+                      return false;
+                  }
+                );
+              }
+            );
+      </script><!--$('#comments').append(response+"<br>");-->
     </div><!-- /.container -->
 {% endblock %}

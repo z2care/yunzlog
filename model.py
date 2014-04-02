@@ -22,6 +22,16 @@ class Article(ndb.Model):
     read = ndb.IntegerProperty(default=0)
     summary = ndb.StringProperty(default='')
     draft = ndb.BooleanProperty(default=False)
+    comments = ndb.KeyProperty(kind='Comment', repeated=True)
+
+class Comment(ndb.Model):
+	  entry = ndb.KeyProperty(kind=Article, required=True)#use parent instead
+	  author = ndb.UserProperty()
+	  email = ndb.StringProperty()
+	  notify = ndb.BooleanProperty()
+	  ipaddr = ndb.StringProperty()
+	  date = ndb.DateTimeProperty(auto_now=True)
+	  content = ndb.TextProperty(required=True)
 
 class Setting(ndb.Model):
     site_title = ndb.StringProperty()

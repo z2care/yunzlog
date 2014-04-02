@@ -51,11 +51,14 @@ class SingleBlog(BaseRequestHandler):
 
         article[0].read += 1
         article[0].put()
+        comments = Comment.query(Comment.entry==article[0].key).order(-Comment.date)
+        logging.info(comments)
 
         template_values = {
             'page_title': 'Blog',
             'blog_active': 'active',
             'article': article,
+            'comments': comments,
         }
         template_values.update(BaseRequestHandler.base_values)
         template = self.get_env.get_template('singleblog.html')
@@ -88,9 +91,21 @@ class BlogsTags(BaseRequestHandler):
 #END: BlogsListPage
 #START: BlogCommentPage
 class BlogComment(BaseRequestHandler):
-    def get(self, archive=None, postid=None):
-        self.request.get('cmtext')
-#END: BlogCommentPage
+    def get(self):
+        logging.info('blog comment get arrived')
+    def post(self):
+        logging.info('blog comment post arrived')
+
+        cmtext=self.request.get('cmtext')
+        keyid=self.request.get('keyid')
+        ipaddr=self.request.remote_addr
+        author=self.request.remote_user
+
+        comment=Comment(entry=ndb.Key('Article',int(keyid)),content=cmtext,ipaddr=ipaddr,author=author)
+        comment.put()
+ 
+        self.response.write('<h3>%s<small>%s</small></h3><p>%s</p>'%(comment.author,comment.ipaddr,cmtext))
++#END: BlogCommentPage
 # START: Frame
 app = webapp2.WSGIApplication([('/blog', BlogsList),
                                ('/blog/(?P<archive>\d{6})/(?P<postid>\d{6})', SingleBlog),
