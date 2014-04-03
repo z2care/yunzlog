@@ -101,27 +101,24 @@
           </div><!-- /well -->
         </div>
       </div>
-          <script type="text/javascript">
-            $(document).ready(
-              function() {
-                $("#submit").click(
+      <script type="text/javascript">
+         $(document).ready(
+            function() {
+               $("#submit").click(
                   function() {
                       $.ajax({
                         url: "/blog/comment",
                         type: 'POST',
                         data: {cmtext: $("#cmtext").val(),keyid: $("#keyid").val()},
                         success: function(response) {
-                          $('#comments').append(response+"<br>");
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                          alert('status='+XMLHttpRequest.status+' state='+XMLHttpRequest.readyState+' textStatus='+textStatus);
+                          $( response ).prependTo( "#comments" );
                         },
                       });
                       return false;
                   }
-                );
-              }
-            );
-      </script><!--$('#comments').append(response+"<br>");-->
+               );
+            }
+         );
+      </script>
     </div><!-- /.container -->
 {% endblock %}

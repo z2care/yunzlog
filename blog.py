@@ -104,8 +104,8 @@ class BlogComment(BaseRequestHandler):
         comment=Comment(entry=ndb.Key('Article',int(keyid)),content=cmtext,ipaddr=ipaddr,author=author)
         comment.put()
  
-        self.response.write('<h3>%s<small>%s</small></h3><p>%s</p>'%(comment.author,comment.ipaddr,cmtext))
-+#END: BlogCommentPage
+        self.response.write('<h3>%s<small>%s</small></h3><p>%s</p>'%(comment.author,comment.date,cmtext))
+#END: BlogCommentPage
 # START: Frame
 app = webapp2.WSGIApplication([('/blog', BlogsList),
                                ('/blog/(?P<archive>\d{6})/(?P<postid>\d{6})', SingleBlog),
