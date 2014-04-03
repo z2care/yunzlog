@@ -43,10 +43,20 @@
           <div class="well">
             <h4>Leave a Comment:</h4>
             <form role="form" action="/blog/comment">
+              <div class="row">
+                <div class="col-lg-2">
+                  <input class="form-control" name="name" placeholder="{{_('Name')}}">
+                </div>
+                <div class="col-lg-4">
+                  <input class="form-control" name="email" placeholder="{{_('Email')}}">
+                </div>
+              </div>
+              <br>
               <div class="form-group">
                 <input type="hidden" value="{{article[0].key.id()}}" id="keyid"/>
-                <textarea class="form-control" rows="3" id="cmtext" ></textarea>
+                <textarea class="form-control" rows="4" id="cmtext" ></textarea>
               </div>
+              <div>
               <button type="submit" class="btn btn-primary" id="submit">Submit</button>
             </form>
           </div>
