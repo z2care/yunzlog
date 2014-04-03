@@ -56,8 +56,8 @@ msgstr "编辑"
 
 #: templates/admin/base.html:47 templates/admin/base.html:55
 #: templates/default/base.html:40
-msgid "维基"
-msgstr ""
+msgid "Wiki"
+msgstr "维基"
 
 #: templates/admin/base.html:52
 msgid "Listing"
