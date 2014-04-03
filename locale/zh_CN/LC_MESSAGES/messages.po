@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-26 21:36+0800\n"
-"PO-Revision-Date: 2014-03-26 21:38+0800\n"
+"POT-Creation-Date: 2014-04-04 00:07+0800\n"
+"PO-Revision-Date: 2014-04-04 00:12+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -39,11 +39,11 @@ msgstr "翻译"
 msgid "Reprint"
 msgstr "转载"
 
-#: templates/admin/article.html:67
+#: templates/admin/article.html:68
 msgid "Save Draft"
 msgstr "保存草稿"
 
-#: templates/admin/article.html:68
+#: templates/admin/article.html:69
 msgid "Pub Article"
 msgstr "发布文章"
 
@@ -54,6 +54,11 @@ msgstr "概要"
 #: templates/admin/base.html:44
 msgid "Editing"
 msgstr "编辑"
+
+#: templates/admin/base.html:47 templates/admin/base.html:55
+#: templates/default/base.html:40
+msgid "维基"
+msgstr ""
 
 #: templates/admin/base.html:52
 msgid "Listing"
@@ -67,7 +72,7 @@ msgstr "评论"
 msgid "Category"
 msgstr "分类"
 
-#: templates/admin/base.html:62 templates/default/base.html:41
+#: templates/admin/base.html:62 templates/default/base.html:42
 msgid "Gallery"
 msgstr "图库"
 
@@ -113,7 +118,7 @@ msgstr "编辑"
 msgid "Delete"
 msgstr "删除"
 
-#: templates/default/base.html:31
+#: templates/default/base.html:32
 msgid "Yunzlog"
 msgstr "云之歌"
 
@@ -122,20 +127,16 @@ msgstr "云之歌"
 msgid "Home"
 msgstr "首页"
 
-#: templates/default/base.html:38 templates/default/bloglist.html:11
+#: templates/default/base.html:39 templates/default/bloglist.html:11
 #: templates/default/singleblog.html:11
 msgid "Blog"
 msgstr "博客"
 
-#: templates/default/base.html:39
-msgid "Wiki"
-msgstr "维基"
-
-#: templates/default/base.html:40
+#: templates/default/base.html:41
 msgid "Project"
 msgstr "项目"
 
-#: templates/default/base.html:42
+#: templates/default/base.html:43
 msgid "About"
 msgstr "关于"
 
@@ -158,4 +159,12 @@ msgstr "博客类型"
 #: templates/default/singleblog.html:8
 msgid "PageClass"
 msgstr "博客分类"
+
+#: templates/default/singleblog.html:48
+msgid "Name"
+msgstr "昵称"
+
+#: templates/default/singleblog.html:51
+msgid "Email"
+msgstr "邮件"
 

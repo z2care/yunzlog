@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-26 21:36+0800\n"
+"POT-Creation-Date: 2014-04-04 00:07+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,146 +19,151 @@ msgstr ""
 
 #: templates/admin/article.html:8
 msgid "Admin"
-msgstr ""
+msgstr "管理"
 
 #: templates/admin/article.html:9 templates/admin/base.html:46
 #: templates/admin/base.html:54
 msgid "Article"
-msgstr ""
+msgstr "文章"
 
 #: templates/admin/article.html:29
 msgid "Original"
-msgstr ""
+msgstr "原创"
 
 #: templates/admin/article.html:30
 msgid "Translate"
-msgstr ""
+msgstr "翻译"
 
 #: templates/admin/article.html:31
 msgid "Reprint"
-msgstr ""
-
-#: templates/admin/article.html:67
-msgid "Save Draft"
-msgstr ""
+msgstr "转载"
 
 #: templates/admin/article.html:68
+msgid "Save Draft"
+msgstr "保存草稿"
+
+#: templates/admin/article.html:69
 msgid "Pub Article"
-msgstr ""
+msgstr "发布文章"
 
 #: templates/admin/base.html:41
 msgid "Main"
-msgstr ""
+msgstr "概要"
 
 #: templates/admin/base.html:44
 msgid "Editing"
-msgstr ""
+msgstr "编辑"
 
 #: templates/admin/base.html:47 templates/admin/base.html:55
-msgid "WiKi"
+#: templates/default/base.html:40
+msgid "维基"
 msgstr ""
 
 #: templates/admin/base.html:52
 msgid "Listing"
-msgstr ""
+msgstr "列表"
 
 #: templates/admin/base.html:56
 msgid "Comment"
-msgstr ""
+msgstr "评论"
 
 #: templates/admin/base.html:57
 msgid "Category"
-msgstr ""
+msgstr "分类"
 
-#: templates/admin/base.html:62 templates/default/base.html:41
+#: templates/admin/base.html:62 templates/default/base.html:42
 msgid "Gallery"
-msgstr ""
+msgstr "图库"
 
 #: templates/admin/base.html:64
 msgid "Setting"
-msgstr ""
+msgstr "设置"
 
 #: templates/admin/listing.html:27
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: templates/admin/listing.html:28
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: templates/admin/listing.html:29
 msgid "Draft"
-msgstr ""
+msgstr "草稿"
 
 #: templates/admin/listing.html:30 templates/default/bloglist.html:29
 #: templates/default/singleblog.html:28
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: templates/admin/listing.html:31 templates/default/bloglist.html:28
 #: templates/default/singleblog.html:27
 msgid "Read"
-msgstr ""
+msgstr "阅读"
 
 #: templates/admin/listing.html:32
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: templates/admin/listing.html:33
 msgid "Operate"
-msgstr ""
+msgstr "操作"
 
 #: templates/admin/listing.html:47
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: templates/admin/listing.html:49
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
-#: templates/default/base.html:31
+#: templates/default/base.html:32
 msgid "Yunzlog"
-msgstr ""
+msgstr "云之歌"
 
 #: templates/default/base.html:37 templates/default/bloglist.html:10
 #: templates/default/singleblog.html:10
 msgid "Home"
-msgstr ""
+msgstr "首页"
 
-#: templates/default/base.html:38 templates/default/bloglist.html:11
+#: templates/default/base.html:39 templates/default/bloglist.html:11
 #: templates/default/singleblog.html:11
 msgid "Blog"
-msgstr ""
+msgstr "博客"
 
-#: templates/default/base.html:39
-msgid "Wiki"
-msgstr ""
-
-#: templates/default/base.html:40
+#: templates/default/base.html:41
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
-#: templates/default/base.html:42
+#: templates/default/base.html:43
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 #: templates/default/bloglist.html:27 templates/default/singleblog.html:26
 msgid "Posted on"
-msgstr ""
+msgstr "发布于"
 
 #: templates/default/bloglist.html:33
 msgid "Read More"
-msgstr ""
+msgstr "阅读更多"
 
 #: templates/default/bloglist.html:47
 msgid "Blog Search"
-msgstr ""
+msgstr "博客搜索"
 
 #: templates/default/singleblog.html:8
 msgid "BlogType"
-msgstr ""
+msgstr "博客类型"
 
 #: templates/default/singleblog.html:8
 msgid "PageClass"
-msgstr ""
+msgstr "博客分类"
+
+#: templates/default/singleblog.html:48
+msgid "Name"
+msgstr "昵称"
+
+#: templates/default/singleblog.html:51
+msgid "Email"
+msgstr "邮件"
 
