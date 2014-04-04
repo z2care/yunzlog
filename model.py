@@ -26,7 +26,7 @@ class Article(ndb.Model):
 
 class Comment(ndb.Model):
 	  entry = ndb.KeyProperty(kind=Article, required=True)#use parent instead
-	  author = ndb.UserProperty()
+	  author = ndb.StringProperty()
 	  email = ndb.StringProperty()
 	  notify = ndb.BooleanProperty()
 	  ipaddr = ndb.StringProperty()

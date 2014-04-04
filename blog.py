@@ -99,11 +99,12 @@ class BlogComment(BaseRequestHandler):
         cmtext=self.request.get('cmtext')
         keyid=self.request.get('keyid')
         ipaddr=self.request.remote_addr
-        author=self.request.remote_user
+        author=self.request.get('name')
+        email=self.request.get('email')
+        #if author and email not None, cookie it.
 
-        comment=Comment(entry=ndb.Key('Article',int(keyid)),content=cmtext,ipaddr=ipaddr,author=author)
+        comment=Comment(entry=ndb.Key('Article',int(keyid)),content=cmtext,ipaddr=ipaddr,author=author,email=email)
         comment.put()
- 
         self.response.write('<h3>%s<small>%s</small></h3><p>%s</p>'%(comment.author,comment.date,cmtext))
 #END: BlogCommentPage
 # START: Frame
