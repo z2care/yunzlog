@@ -21,7 +21,9 @@
           {% if articles %}
             {% for article in articles %}
 
-              <h2><span class="label label-info">{{article.type}}</span><a href="/blog/{{article.archive}}/{{article.postid}}">  {{article.title}}</a></h2>
+              <!--<h2><span class="label label-info"></span>-->
+              <h2><img src="/statics/img/{{article.type}}.png" />
+              <a href="/blog/{{article.archive}}/{{article.postid}}">  {{article.title}}</a></h2>
 
                 <p>
                   <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article.date}}
