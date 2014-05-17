@@ -33,10 +33,34 @@
         <div class="col-md-9 col-sm-8">
           <h1 class="page-header">CTS List Page <small>Collect all android solution</small></h1>
           <ul class="breadcrumb">
+          	  <li><select id="packages">
+                  <option>Packages</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select></li>
+              <li><select id="classes">
+                  <option>Classes</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select></li>
+              <li><select id="methods">
+                  <option>Methods</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select></li>
+          </ul>
+          <ul class="breadcrumb">
             <li><a href="Package">Package</a></li>
             <li><a href="Class">Class</a></li>
             <li class="active">Method</li>
           </ul>
+          <p id="target"></p>
           <p>author date read</p>
           <p>exception</p>
           <p>analysis</p>
@@ -44,6 +68,54 @@
         </div>
 
       </div><!-- /.row -->
+<SCRIPT LANGUAGE="JavaScript">
+$(function(){
 
+  var $packages = $('#packages');
+  var $classes = $('#classes');
+  var $methods = $('#methods');
+  var $target = $('#target')
+
+  $packages.change(function()
+  {
+    $classes.empty().append('<option>loading...</option>');
+		load_classes($(this).val());
+	});
+	$classes.change(function(){
+		$methods.empty().append('<option>loading...</option>');
+		load_methods($(this).val());	
+	});
+	$methods.change(function(){
+		$target.empty().append('loading...')
+		load_target($(this).val());	
+	});
+	
+	function load_packages()
+	{
+		//ajax for package info
+		//append package info
+	}
+
+	function load_classes(parentId)
+	{
+		$methods.empty().append('<option>loading...</option>');
+		$classes.empty().append('<option>21</option>');
+		$classes.append('<option>22</option>');
+	}
+
+	function load_methods(id)
+	{
+		$methods.empty().append('<option>31</option>');
+		$methods.append('<option>32</option>');
+	}
+
+	function load_target(id)
+	{
+		$target.append('<b>target text</b>');
+	}
+	
+	load_package()
+});
+</SCRIPT>
     </div><!-- /.container -->
 {% endblock %}
