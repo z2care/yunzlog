@@ -11,6 +11,7 @@ import webapp2
 import jinja2
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from StringIO import StringIO
+#import cStringIO as StringIO
 
 import os, logging, random
 
@@ -45,6 +46,7 @@ class MediaPage(BaseRequestHandler):
             self.redirect('/statics/img/noimage.jpg')
 
 class AuthCode(BaseRequestHandler):
+    #ref: http://qinxuye.me/article/create-validate-code-image-with-pil/
     _letter_cases = "abcdefghjkmnpqrstuvwxy" # except:i,l,o,z
     _upper_cases = _letter_cases.upper() # upper case letters
     _numbers = ''.join(map(str, range(3, 10))) # numbers
@@ -56,10 +58,8 @@ class AuthCode(BaseRequestHandler):
 
         output = StringIO()
         img.save(output, 'gif')
-        #img_data = output.getvalue()
+        img_data = output.getvalue()
         output.close()
-
-        img.save(img_data, 'gif')
 
         self.response.headers['Content-Type'] = 'image/gif'
         self.response.out.write(img_data)
