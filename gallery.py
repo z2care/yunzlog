@@ -70,6 +70,8 @@ class AuthCode(BaseRequestHandler):
                              mode="RGB",
                              bg_color=(255, 255, 255),
                              fg_color=(0, 0, 255),
+                             font_size=18,
+                             font_type="Arialn.ttf",
                              length=4,
                              draw_lines=True,
                              n_line=(1, 2),
@@ -104,7 +106,8 @@ class AuthCode(BaseRequestHandler):
             c_chars = get_chars()
             strs = ' %s ' % ' '.join(c_chars)
 
-            font = ImageFont.load_default()
+            #font = ImageFont.load_default()
+            font = ImageFont.truetype(font_type, font_size)
             font_width, font_height = font.getsize(strs)
 
             draw.text(((width - font_width) / 3, (height - font_height) / 3),
