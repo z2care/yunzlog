@@ -1,185 +1,67 @@
 {% extends "base.html" %}
-{% block content %}
-
-    <div id="myCarousel" class="carousel slide">
-      <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-            <div class="carousel-caption">
-              <h1>Modern Business - A Bootstrap 3 Template</h1>
+{% block marketing %}
+        <div id="home-page-marketing" class="row">
+            <div id="bricks-hero-unit" class="span6">
+                <h1>A responsive business theme based on bootstrap</h1>
+                <img src="statics/img/responsive-layout.png" class="visible-phone hero-unit-image" />
+                <p class="explanation">Donec non ultricies est. Vestibulum porta odio justo, et tincidunt metus. Cras dictum laoreet nibh, nec tempus tortor porta vel. Cras risus purus, porttitor sed condimentum ac, scelerisque quis ipsum. Donec posuere tincidunt nisl vitae facilisis. Nam pharetra elit ut lacus feugiat eget cursus leo blandit.</p>
+                <p class="action-buttons-container"><a class="btn btn-primary btn-large">Get in touch with us</a></p>
             </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-            <div class="carousel-caption">
-              <h1>Ready to Style &amp; Add Content</h1>
+            <div class="span6 hidden-phone">
+                <img src="statics/img/responsive-layout.png" />
             </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-            <div class="carousel-caption">
-              <h1>Additional Layout Options at <a href="http://startbootstrap.com">http://startbootstrap.com</a></h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
-    </div>
-
-    <div class="section">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-check-circle"></i> Bootstrap 3 Built</h3>
-            <p>The 'Modern Business' website template by <a href="http://startbootstrap.com">Start Bootstrap</a> is built with <a href="http://getbootstrap.com">Bootstrap 3</a>. Make sure you're up to date with latest Bootstrap documentation!</p>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-pencil"></i> Ready to Style &amp; Edit</h3>
-            <p>You're ready to go with this pre-built page structure, now all you need to do is add your own custom stylings! You can see some free themes over at <a href="http://bootswatch.com">Bootswatch</a>, or come up with your own using <a href="http://getbootstrap.com/customize/">the Bootstrap customizer</a>!</p>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-folder-open"></i> Many Page Options</h3>
-            <p>This template features many common pages that you might see on a business website. Pages include: about, contact, portfolio variations, blog, pricing, FAQ, 404, services, and general multi-purpose pages.</p>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section -->
-
-    <div class="section-colored text-center">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>Modern Business: A Clean &amp; Simple Full Website Template by Start Bootstrap</h2>
-            <p>A complete website design featuring various single page templates from Start Bootstraps library of free HTML starter templates.</p>
-            <hr>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section-colored -->
-
-    <div class="section">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2>Display Some Work on the Home Page Portfolio</h2>
-            <hr>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section -->
-
-    <div class="section-colored">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h2>Modern Business Features Include:</h2>
-            <ul>
-              <li>Bootstrap 3 Framework</li>
-              <li>Mobile Responsive Design</li>
-              <li>Predefined File Paths</li>
-              <li>Working PHP Contact Page</li>
-              <li>Minimal Custom CSS Styles</li>
-              <li>Unstyled: Add Your Own Style and Content!</li>
-              <li>Font-Awesome fonts come pre-installed!</li>
-              <li>100% <strong>Free</strong> to Use</li>
-              <li>Open Source: Use for any project, private or commercial!</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <img class="img-responsive" src="http://placehold.it/700x450/ffffff/cccccc">
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section-colored -->
-
-    <div class="section">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <img class="img-responsive" src="http://placehold.it/700x450">
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h2>Modern Business Features Include:</h2>
-            <ul>
-              <li>Bootstrap 3 Framework</li>
-              <li>Mobile Responsive Design</li>
-              <li>Predefined File Paths</li>
-              <li>Working PHP Contact Page</li>
-              <li>Minimal Custom CSS Styles</li>
-              <li>Unstyled: Add Your Own Style and Content!</li>
-              <li>Font-Awesome fonts come pre-installed!</li>
-              <li>100% <strong>Free</strong> to Use</li>
-              <li>Open Source: Use for any project, private or commercial!</li>
-            </ul>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section -->
-
-    <div class="container">
-
-      <div class="row well">
-        <div class="col-lg-8 col-md-8">
-          <h4>'Modern Business' is a ready-to-use, Bootstrap 3 updated, multi-purpose HTML theme!</h4>
-          <p>For more templates and more page options that you can integrate into this website template, visit Start Bootstrap!</p>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <a class="btn btn-lg btn-primary pull-right" href="http://startbootstrap.com">See More Templates!</a>
-        </div>
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
+        </div><!--home-page-marketing-->
 {% endblock %}
+{% block content %}
+<div id="content" class="container">
+    <div class="marketing">
+        <h2>Our Services</h2>
+        <p class="marketing-byline">Quisque a quam non metus fringilla feugiat quis non sem. Phasellus quis felis sapien, id interdum mi. <a href="services.html">Learn more</a></p>
 
+        <div class="row">
+            <div class="span4">
+                <i class="icon-tint service-icon"></i>
+                <h3>Consulting</h3>
+                <p>In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur porta pharetra laoreet.</p>
+            </div>
+            <div class="span4">
+                <i class="icon-leaf service-icon"></i>
+                <h3>Technology</h3>
+                <p>Nam lacus nisl, facilisis ac tempor ac, faucibus et eros. Cras sed erat libero, sit amet imperdiet urna. In tempor commodo dui, fringilla pharetra massa hendrerit blandit. Phasellus condimentum hendrerit condimentum.</p>
+            </div>
+            <div class="span4">
+                <i class="icon-globe service-icon"></i>
+                <h3>Outsourcing</h3>
+                <p>Donec eu enim metus. Nulla sed elit augue. Mauris purus turpis, placerat sed tincidunt at, rutrum ac sem. Integer eget mi mi, eget accumsan elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            </div>
+        </div>
+
+        <hr class="soften" />
+
+        <h2>Our Latest Projects</h2>
+        <p class="marketing-byline">Quisque a quam non metus fringilla feugiat quisen, id interdum mi. <a href="portfolio.html">Click here</a> to see our portfolio.</p>
+        <ul id="latest-projects" class="thumbnails portfolio">
+            <li class="span3">
+                <a href="portfolio.html">
+                    <img class="sengal-thumbnail thumbnail" alt="Portfolio Item" src="http://placehold.it/300x250" />
+                </a>
+            </li>
+            <li class="span3">
+                <a href="portfolio.html">
+                    <img class="sengal-thumbnail thumbnail" alt="Portfolio Item" src="http://placehold.it/300x250" />
+                </a>
+            </li>
+            <li class="span3">
+                <a href="portfolio.html">
+                    <img class="sengal-thumbnail thumbnail" alt="Portfolio Item" src="http://placehold.it/300x250" />
+                </a>
+            </li>
+            <li class="span3">
+                <a href="portfolio.html">
+                    <img class="sengal-thumbnail thumbnail" alt="Portfolio Item" src="http://placehold.it/300x250" />
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

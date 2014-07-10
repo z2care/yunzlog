@@ -1,87 +1,160 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% block content %}
+<div id="content">
     <div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-12">
-          <h1 class="page-header">Blog Home<small>Blog Homepage</small></h1>
-          <ol class="breadcrumb">
-            <li><a href="/home">{{_("Home")}}</a></li>
-            <li class="active">{{_("Blog")}}</li>
-          </ol>
-        </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col-lg-9">
-          <hr>
-          {% if articles %}
-            {% for article in articles %}
-
-              <!--<h2><span class="label label-info"></span>-->
-              <h2><img src="/statics/img/{{article.type}}.png" />
-              <a href="/blog/{{article.archive}}/{{article.postid}}">  {{article.title}}</a></h2>
-
-                <p>
-                  <i class="fa fa-clock-o"></i> {{_("Posted on")}} {{article.date}}
-                  <i class="fa fa-search"></i>{{article.read}} {{_("Read")}}
-                  <i class="fa fa-pencil">{{_("Author")}} {{article.author}}</i>
-                </p>
-
-              <p>{{article.summary|safe}}</p>
-              <a class="btn btn-primary" href="/blog/{{article.archive}}/{{article.postid}}">{{_("Read More")}}<i class="fa fa-angle-right"></i></a>
-
-              <hr>
-            {% endfor %}
-          {% endif %}
-              <ul class="pager">
-                {% if newer %}<li class="previous"><a href="/blog?page={{newer}}">&larr;Newer </a></li>{% endif %}
-                {% if older %}<li class="next"><a href="/blog?page={{older}}"> Older&rarr;</a></li>{% endif %}
-              </ul>
-
-        </div>
-
-        <div class="col-lg-3">
-          <div class="well">
-            <h4>{{_("Blog Search")}}</h4>
-            <div class="input-group">
-              <input type="text" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-              </span>
-            </div><!-- /input-group -->
-          </div><!-- /well -->
-          <div class="well">
-            <h4>Popular Blog Categories</h4>
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled">
-                    <li><a href="#dinosaurs">Dinosaurs</a></li>
-                    <li><a href="#spaceships">Spaceships</a></li>
-                    <li><a href="#fried-foods">Fried Foods</a></li>
-                    <li><a href="#wild-animals">Wild Animals</a></li>
-                  </ul>
+        <div id="blog" class="row">
+            <div class="span7">
+                <div class="page-header">
+                    <h1>Blog</h1>
                 </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled">
-                    <li><a href="#alien-abductions">Alien Abductions</a></li>
-                    <li><a href="#business-casual">Business Casual</a></li>
-                    <li><a href="#robots">Robots</a></li>
-                    <li><a href="#fireworks">Fireworks</a></li>
-                  </ul>
-                </div>
-              </div>
-          </div><!-- /well -->
-          <div class="well">
-            <h4>Visitor Cloud Widget</h4>
-            <p></p>
-            <script type="text/javascript" src="http://jh.revolvermaps.com/2/1.js?i=7yhn2qa9bcu&amp;s=220&amp;m=0&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
-          </div><!-- /well -->
-        </div>
-      </div>
 
-    </div><!-- /.container -->
+                <div class="entry">
+                    <h2 class="entry-title"> In quis luctus dui</h2>
+
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> John Smith</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> December 24, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 3 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Duis neque diam, molestie porttitor fringilla eu, interdum eu lorem. Ut sagittis pretium mi, eget sagittis nulla feugiat nec. Sed egestas convallis nunc, vitae consectetur nibh sagittis quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.. Sed egestas convallis nunc, vitae consectetur nibh sagittis quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <h2 class="entry-title">Morbi in lorem in libero volutpat sagittis</h2>
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> Mohammad</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> December 3, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 4 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Praesent tempus iaculis nulla id tempor. Sed porttitor pellentesque convallis. Aenean luctus, mi id dictum rutrum, turpis diam tristique justo, non sagittis sem augue vitae elit. Phasellus auctor laoreet varius. In hac habitasse platea dictumst. Integer accumsan massa ac sem aliquet eleifend.</p>
+
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <h2 class="entry-title">Etiam eleifend pretium diam, in ullamcorper enim faucibus ac</h2>
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> Jane Smith</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> November 22, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 7 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Quisque a mauris ligula, vitae posuere urna. Nullam in magna quam. Pellentesque habitant morbi tristique. Vestibulum et varius ligula. Vestibulum ut purus eu nisl consectetur molestie. Praesent lacinia purus eget erat dapibus ut mattis massa pellentesque. Nam hendrerit urna ac est volutpat eu mattis diam sagittis.</p>
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <h2 class="entry-title">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</h2>
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> John Smith</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> November 7, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 0 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Aenean sed urna erat, sit amet elementum elit. In quis luctus dui. In sagittis, augue eget turpis egestas. Vivamus porttitor facilisis volutpat. Sollicitudin scelerisque, mi magna egestas augue, a venenatis tortor urna et lacus. Quisque rhoncus libero vitae velit feugiat ut lobortis neque blandit.</p>
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <h2 class="entry-title">Aliquam nec fermentum ligula</h2>
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> Smith</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> October 24, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 0 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Vestibulum porttitor enim ac dolor accumsan accumsan nec ut neque. Ut eget elit et elit semper feugiat molestie eu mauris. Phasellus interdum, sapien sed rhoncus mollis, magna justo ornare urna, a aliquet enim dolor quis felis.</p>
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <h2 class="entry-title"> Quisque egestas enim id nibh sodales consequat iaculis odio vulputate</h2>
+                    <p class="entry-meta">
+                        <span class="entry-author"><i class="icon-user"></i> Jane</span>
+                        <span class="entry-date"><i class="icon-calendar"></i> October 5, 2012</span>
+                        <span class="entry-comments"><i class="icon-comments"></i> 5 Comments</span>
+                    </p>
+                    <div class="entry-content">
+                        <p>Nulla tortor eros, convallis nec commodo ac, egestas in lacus. Morbi in lorem in libero volutpat sagittis. Praesent tempus iaculis nulla id tempor. Mauris sapien enim, commodo ut blandit quis, mattis sed urna. Cras sollicitudin tristique leo, et mollis justo iaculis quis. Nam mi enim, ullamcorper nec volutpat a, pharetra ut augue. Aliquam erat volutpat. Vivamus quis porta mauris.</p>
+                        <p><a href="single.html">Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="sengal-pagination pagination">
+                    <ul>
+                        <li class="disabled"><a href="#">Prev</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="span1 hidden-phone"></div>
+            <div class="span4">
+                <div class="sidebar-widget">
+                    <h3>Archives</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="blog.html">October 2012</a></li>
+                        <li><a href="blog.html">September 2012</a></li>
+                        <li><a href="blog.html">April 2012</a></li>
+                        <li><a href="blog.html">March 2012</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="blog.html">Events</a></li>
+                        <li><a href="blog.html">Web Desigining</a></li>
+                        <li><a href="blog.html">PHP &amp; MySql</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="single.html">In quis luctus dui</a></li>
+                        <li><a href="single.html">Morbi in lorem in libero volutpat sagittis</a></li>
+                        <li><a href="single.html">Etiam eleifend pretium diam, in ullamcorper enim faucibus ac</a></li>
+                        <li><a href="single.html">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Subscribe to our Newsletter</h3>
+                    <p style="padding-top: 10px">Be informed about our latest posting. Subscribe to our blog post.</p>
+                    <p>
+                    <form />
+                        <div class="input-append">
+                            <input type="text" placeholder="Enter your Email" />
+                            <input type="text" class="span3" placeholder="Enter your Email Address" style="height: 30px;">
+                            <button class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </form>
+                    </p>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Find us on Facebook</h3>
+                    <div class="cleafix" style="margin-top: 10px;">
+                        <iframe src="//www.facebook.com/plugins/likebox.html?href=http%3A%2F%2Fwww.facebook.com%2Fpremium.wp.themes.directory&amp;width=292&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=false&amp;appId=185650951579191" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:258px;" allowtransparency="true"></iframe>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
