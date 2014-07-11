@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 <div id="content">
     <div class="container">
@@ -7,7 +7,8 @@
                 <div class="page-header">
                     <h1>Blog</h1>
                 </div>
-
+                {% if articles %}
+                {% for article in articles %}
                 <div class="entry">
                     <h2 class="entry-title"> In quis luctus dui</h2>
 
@@ -21,86 +22,20 @@
                         <p><a href="single.html">Read More</a></p>
                     </div>
                 </div>
-
-                <div class="entry">
-                    <h2 class="entry-title">Morbi in lorem in libero volutpat sagittis</h2>
-                    <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> Mohammad</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> December 3, 2012</span>
-                        <span class="entry-comments"><i class="icon-comments"></i> 4 Comments</span>
-                    </p>
-                    <div class="entry-content">
-                        <p>Praesent tempus iaculis nulla id tempor. Sed porttitor pellentesque convallis. Aenean luctus, mi id dictum rutrum, turpis diam tristique justo, non sagittis sem augue vitae elit. Phasellus auctor laoreet varius. In hac habitasse platea dictumst. Integer accumsan massa ac sem aliquet eleifend.</p>
-
-                        <p><a href="single.html">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="entry">
-                    <h2 class="entry-title">Etiam eleifend pretium diam, in ullamcorper enim faucibus ac</h2>
-                    <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> Jane Smith</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> November 22, 2012</span>
-                        <span class="entry-comments"><i class="icon-comments"></i> 7 Comments</span>
-                    </p>
-                    <div class="entry-content">
-                        <p>Quisque a mauris ligula, vitae posuere urna. Nullam in magna quam. Pellentesque habitant morbi tristique. Vestibulum et varius ligula. Vestibulum ut purus eu nisl consectetur molestie. Praesent lacinia purus eget erat dapibus ut mattis massa pellentesque. Nam hendrerit urna ac est volutpat eu mattis diam sagittis.</p>
-                        <p><a href="single.html">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="entry">
-                    <h2 class="entry-title">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</h2>
-                    <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> John Smith</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> November 7, 2012</span>
-                        <span class="entry-comments"><i class="icon-comments"></i> 0 Comments</span>
-                    </p>
-                    <div class="entry-content">
-                        <p>Aenean sed urna erat, sit amet elementum elit. In quis luctus dui. In sagittis, augue eget turpis egestas. Vivamus porttitor facilisis volutpat. Sollicitudin scelerisque, mi magna egestas augue, a venenatis tortor urna et lacus. Quisque rhoncus libero vitae velit feugiat ut lobortis neque blandit.</p>
-                        <p><a href="single.html">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="entry">
-                    <h2 class="entry-title">Aliquam nec fermentum ligula</h2>
-                    <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> Smith</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> October 24, 2012</span>
-                        <span class="entry-comments"><i class="icon-comments"></i> 0 Comments</span>
-                    </p>
-                    <div class="entry-content">
-                        <p>Vestibulum porttitor enim ac dolor accumsan accumsan nec ut neque. Ut eget elit et elit semper feugiat molestie eu mauris. Phasellus interdum, sapien sed rhoncus mollis, magna justo ornare urna, a aliquet enim dolor quis felis.</p>
-                        <p><a href="single.html">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="entry">
-                    <h2 class="entry-title"> Quisque egestas enim id nibh sodales consequat iaculis odio vulputate</h2>
-                    <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> Jane</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> October 5, 2012</span>
-                        <span class="entry-comments"><i class="icon-comments"></i> 5 Comments</span>
-                    </p>
-                    <div class="entry-content">
-                        <p>Nulla tortor eros, convallis nec commodo ac, egestas in lacus. Morbi in lorem in libero volutpat sagittis. Praesent tempus iaculis nulla id tempor. Mauris sapien enim, commodo ut blandit quis, mattis sed urna. Cras sollicitudin tristique leo, et mollis justo iaculis quis. Nam mi enim, ullamcorper nec volutpat a, pharetra ut augue. Aliquam erat volutpat. Vivamus quis porta mauris.</p>
-                        <p><a href="single.html">Read More</a></p>
-                    </div>
-                </div>
+                {% endfor %}
+                {% else %}
+                    <h2 class="entry-title"> No content,please edit and post first.</h2>
+                {% endif %}
 
                 <div class="sengal-pagination pagination">
                     <ul>
-                        <li class="disabled"><a href="#">Prev</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">Next</a></li>
+                        {% if article %}
+                            {% if newer %}<li class="previous"><a href="/blog?page={{newer}}">&larr;Newer </a></li>{% endif %}
+                            {% if older %}<li class="next"><a href="/blog?page={{older}}"> Older&rarr;</a></li>{% endif %}
+                        {% endif %}
                     </ul>
                 </div>
-
                 <div class="clearfix"></div>
-
             </div>
             <div class="span1 hidden-phone"></div>
             <div class="span4">
@@ -141,7 +76,6 @@
                     <form />
                         <div class="input-append">
                             <input type="text" placeholder="Enter your Email" />
-                            <input type="text" class="span3" placeholder="Enter your Email Address" style="height: 30px;">
                             <button class="btn btn-primary">Subscribe</button>
                         </div>
                     </form>
@@ -151,7 +85,7 @@
                 <div class="sidebar-widget">
                     <h3>Find us on Facebook</h3>
                     <div class="cleafix" style="margin-top: 10px;">
-                        <iframe src="//www.facebook.com/plugins/likebox.html?href=http%3A%2F%2Fwww.facebook.com%2Fpremium.wp.themes.directory&amp;width=292&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=false&amp;appId=185650951579191" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:258px;" allowtransparency="true"></iframe>
+                        <!-- <iframe src="//www.facebook.com/plugins/likebox.html?href=http%3A%2F%2Fwww.facebook.com%2Fpremium.wp.themes.directory&amp;width=292&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=false&amp;appId=185650951579191" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:258px;" allowtransparency="true"></iframe>-->
                     </div>
                 </div>            </div>
         </div>
