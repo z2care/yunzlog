@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block marketing %}
+        <div id="home-page-marketing" class="row">
+            <div id="bricks-hero-unit" class="span6">
+                <h1>Contact Us</h1>
+                <div class="row">
+                    <p class="explanation span3">
+
+                        Bootstrap Themes,<br />
+                        235 Small Scale Road, <br />
+                        PO Box 12345, The City - USA<br /><br />
+
+                        Tel: +1-555-563-3434 <br />
+                        Fax: +1-555-563-3535 <br />
+                    </p>
+                    <p class="explanation span3">
+                    <span class="pull-right">
+                        Email: info@google.com<br />
+                        Careers: careers@google.com
+                    </span>
+                    </p>
+                </div>
+            </div>
+            <div id="contact-map" class="span6">
+                <div class="img-polaroid">
+                    <iframe style="width:100%; height: 245px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.055177,-95.668945&amp;spn=2.4635,6.141357&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.055177,-95.668945&amp;spn=2.4635,6.141357&amp;z=7&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div id="content">
+    <div class="container">
+        <div class="page-header">
+            <h2>Reach us thru' email</h2>
+        </div>
+
+        <form class="row sengal-form" />
+            <div class="span6">
+                <label>Name</label>
+                <input type="text" class="input-block-level" placeholder="Enter your Full Name" />
+                <label>Email</label>
+                <input type="text" class="input-block-level" placeholder="Your Email Address" />
+            </div>
+            <div class="span6">
+                <label>Message</label>
+                <textarea rows="6" cols="10" class="input-block-level" placeholder="Your message here"></textarea>
+            </div>
+            <div class="span12">
+                <button class="btn btn-primary btn-large pull-right">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
