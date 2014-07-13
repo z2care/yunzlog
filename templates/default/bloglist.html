@@ -5,21 +5,21 @@
         <div id="blog" class="row">
             <div class="span7">
                 <div class="page-header">
-                    <h1>Blog</h1>
+                    <h1>{{_("Blog")}}</h1>
                 </div>
                 {% if articles %}
                 {% for article in articles %}
                 <div class="entry">
-                    <h2 class="entry-title"> In quis luctus dui</h2>
+                    <h2 class="entry-title"><a href="/blog/{{article.archive}}/{{article.postid}}">{{article.title}}</a></h2>
 
                     <p class="entry-meta">
-                        <span class="entry-author"><i class="icon-user"></i> John Smith</span>
-                        <span class="entry-date"><i class="icon-calendar"></i> December 24, 2012</span>
+                        <span class="entry-author"><i class="icon-user"></i>{{article.author}}</span>
+                        <span class="entry-date"><i class="icon-calendar"></i>{{article.date}}</span>
                         <span class="entry-comments"><i class="icon-comments"></i> 3 Comments</span>
                     </p>
                     <div class="entry-content">
-                        <p>Duis neque diam, molestie porttitor fringilla eu, interdum eu lorem. Ut sagittis pretium mi, eget sagittis nulla feugiat nec. Sed egestas convallis nunc, vitae consectetur nibh sagittis quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.. Sed egestas convallis nunc, vitae consectetur nibh sagittis quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><a href="single.html">Read More</a></p>
+                        <p>{{article.summary|safe}}</p>
+                        <p><a href="href="/blog/{{article.archive}}/{{article.postid}}"">{{_("Read More")}}</a></p>
                     </div>
                 </div>
                 {% endfor %}
@@ -29,10 +29,8 @@
 
                 <div class="sengal-pagination pagination">
                     <ul>
-                        {% if article %}
-                            {% if newer %}<li class="previous"><a href="/blog?page={{newer}}">&larr;Newer </a></li>{% endif %}
-                            {% if older %}<li class="next"><a href="/blog?page={{older}}"> Older&rarr;</a></li>{% endif %}
-                        {% endif %}
+                    {% if newer %}<li class="previous"><a href="/blog?page={{newer}}">&larr;Newer </a></li>{% endif %}
+                    {% if older %}<li class="next"><a href="/blog?page={{older}}"> Older&rarr;</a></li>{% endif %}
                     </ul>
                 </div>
                 <div class="clearfix"></div>
