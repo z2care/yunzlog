@@ -1,147 +1,69 @@
 {% extends "base.html" %}
+{% block marketing %}
+        <div id="home-page-marketing" class="row">
+            <div id="bricks-hero-unit" class="span6">
+                <h1>About Us</h1>
+                <img class="img-polaroid visible-phone hero-unit-image" src="http://placehold.it/600x245" />
+                <p class="explanation">Sengal was launched in 2013 with the aim of being a responsive business theme built with bootstrap. Duis neque diam, molestie porttitor fringilla eu, interdum eu lorem. Ut sagittis pretium mi, eget sagittis nulla feugiat nec. Sed egestas convallis nunc, vitae consectetur nibh sagittis quis. </p>
+            </div>
+            <div class="span6 hidden-phone">
+                <img class="img-polaroid" src="http://placehold.it/600x245" />
+            </div>
+        </div><!--home-page-marketing-->
+{% endblock %}
 {% block content %}
-    <div class="container">
+<div id="content" class="container">
+    <div class="marketing">
+        <h2>Our Services</h2>
+        <p class="marketing-byline">Quisque a quam non metus fringilla feugiat quis non sem. Phasellus quis felis sapien, id interdum mi. <a href="services.html">Learn more</a></p>
 
-      <div class="row">
+        <div class="row">
+            <div class="span12">
+                <div class="page-header">
+                    <h2>The Company</h2>
+                </div>
 
-        <div class="col-lg-12">
-          <h1 class="page-header">About <small>It's Nice to Meet You!</small></h1>
-          <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">About</li>
-          </ol>
+                <p>Quisque a mauris ligula, vitae posuere urna. Nullam in magna quam. Vestibulum et varius ligula. Vestibulum ut purus eu nisl consectetur molestie. Praesent lacinia purus eget erat dapibus ut mattis massa pellentesque. Nam hendrerit urna ac est volutpat eu mattis diam sagittis. Nam iaculis nisl felis, et aliquet quam.</p>
+
+                <p>Quisque egestas enim id nibh sodales consequat iaculis odio vulputate. Aenean sed urna erat, sit amet elementum elit. In quis luctus dui. In sagittis, augue eget sollicitudin scelerisque, mi magna egestas augue, a venenatis tortor urna et lacus. Quisque rhoncus libero vitae velit feugiat ut lobortis neque blandit. Proin tristique blandit mi, vitae vulputate leo vestibulum a. In velit metus, vestibulum vel elementum quis, porttitor a est.</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor enim ac dolor accumsan accumsan nec ut neque. Ut eget elit et elit semper feugiat molestie eu mauris. Phasellus interdum, sapien sed rhoncus mollis, magna justo ornare urna, a aliquet enim dolor quis felis. Nullam arcu massa, rutrum quis consequat nec, feugiat sed felis. Aliquam nec fermentum ligula. Donec vel euismod nibh. Cras nec nibh ut velit lobortis convallis et quis ipsum.</p>
+
+                <p>Nunc ornare placerat dictum. Maecenas nisl ante, posuere eu egestas eget, pulvinar et odio. Pellentesque vitae neque justo, quis vulputate purus. Praesent sed lorem sollicitudin tellus convallis aliquam et quis est. Nullam imperdiet elit eget nibh adipiscing vitae tincidunt elit ullamcorper. Integer vulputate, nibh in volutpat fringilla, sapien dui mattis tortor, eget dignissim orci urna bibendum sem. Vivamus sed ipsum leo, id laoreet enim. Quisque a mauris ligula, vitae posuere urna. Nullam in magna quam. Vestibulum et varius ligula. Vestibulum ut purus eu nisl consectetur molestie. Praesent lacinia purus eget erat dapibus ut mattis massa pellentesque. Nam hendrerit urna ac est volutpat eu mattis diam sagittis. Nam iaculis nisl felis, et aliquet quam.</p>
+            </div>
+
+            <div class="span12">
+                <div class="page-header">
+                    <h2>The Team</h2>
+                </div>
+                <ul class="thumbnails media-grid row">
+                    <li class="span3">
+                        <div class="sengal-thumbnail thumbnail">
+                            <img src="http://placehold.it/270x250" />
+                            <div class="caption">
+                                <h4>John Smith <small>Founder & CEO</small></h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="span3">
+                        <div class="sengal-thumbnail thumbnail">
+                            <img src="http://placehold.it/270x250" />
+                            <div class="caption">
+                                <h4>Dave Smith <small>Director</small></h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="span3">
+                        <div class="sengal-thumbnail thumbnail">
+                            <img src="http://placehold.it/270x250" />
+                            <div class="caption">
+                                <h4>Jane Smith <small>Web Developer</small></h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col-md-6">
-          <img class="img-responsive" src="http://placehold.it/750x450">
-        </div>
-        <div class="col-md-6">
-          <h2>Welcome to 'Modern Business'</h2>
-          <p>This is a great place to introduce your company or project and describe what you do. This about page features general company information, employee bios, and other helpful elements.</p>
-          <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-        </div>
-
-      </div>
-
-      <!-- Team Member Profiles -->
-
-      <div class="row">
-
-        <div class="col-lg-12">
-          <h2 class="page-header">Our Team</h2>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="col-sm-4">
-        	<img class="img-responsive" src="http://placehold.it/750x450">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member do? Keep it short! This is also a great spot for social links!</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-              <li class="tooltip-social facebook-link"><a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-              <li class="tooltip-social linkedin-link"><a href="#linkedin-profile" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            </ul>
-        </div>
-
-      </div>
-
-      <!-- Our Customers -->
-
-      <div class="row">
-
-        <div class="col-lg-12">
-          <h2 class="page-header">Our Customers</h2>
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-        	<img class="img-responsive img-customer" src="http://placehold.it/500x300">
-        </div>
-
-      </div>
-
-    </div><!-- /.container -->
+    </div>
+</div>
 {% endblock %}

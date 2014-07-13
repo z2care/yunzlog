@@ -1,85 +1,75 @@
 {% extends "base.html" %}
-{% block content %}
-    <div class="container">
+{% block marketing %}
+        <div id="home-page-marketing" class="row">
+            <div id="bricks-hero-unit" class="span6">
+                <h1>Services</h1>
+                <img src="statics/img/responsive-layout.png" class="visible-phone hero-unit-image" />
+                <p class="explanation">Donec non ultricies est. Vestibulum porta odio justo, et tincidunt metus. Cras dictum laoreet nibh, nec tempus tortor porta vel. Cras risus purus, porttitor sed condimentum ac, scelerisque quis ipsum. Donec posuere tincidunt nisl vitae facilisis. Nam pharetra elit ut lacus feugiat eget cursus leo blandit.</p>
+                <p class="action-buttons-container"><a class="btn btn-primary btn-large">Get in touch with us</a></p>
+            </div>
+            <div class="span6 hidden-phone">
+                <img src="statics/img/responsive-layout.png" />
+            </div>
+        </div>
+    </div>
+</div>
 
-      <div class="row">
+<div id="content" class="container">
+    <div class="marketing">
+        <h2>What we do</h2>
+        <p class="marketing-byline">Quisque a quam non metus fringilla feugiat quis non sem. Phasellus quis felis sapien, id interdum mi.</p>
 
-        <div class="col-lg-12">
-          <h1 class="page-header">Blog Home 2 <small>Blog Homepage</small></h1>
-          <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Blog Home 2</li>
-          </ol>
+        <div id="services-list" class="row">
+            <div class="span4">
+                <div class="media">
+                    <i class="icon-cogs pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Consulting</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <i class="icon-bullhorn pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Technology</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="media">
+                    <i class="icon-dashboard pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Outsourcing</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <i class="icon-magic pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Web Designing</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="media">
+                    <i class="icon-umbrella pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Online Marketing</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <i class="icon-wrench pull-left services-icon"></i>
+                    <div class="media-body">
+                        <h3>Application Development</h3>
+                        <p class="service-explanation">In in tellus a ante dignissim aliquet. Phasellus odio nisi, hendrerit vel faucibus ac, iaculis et metus. Nulla ac suscipit quam.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-      </div>
-      
-      <div class="row">
-
-        <div class="col-md-1">
-          <p><i class="fa fa-camera fa-4x"></i></p>
-          <p>May 24, 2013</p>
-        </div>
-        <div class="col-md-5">
-          <a href="blog-post.html"><img src="http://placehold.it/600x300" class="img-responsive"></a>
-        </div>
-        <div class="col-md-6">
-          <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a></h3>
-          <p>by <a href="#">Start Bootstrap</a></p>
-          <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-          <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-        </div>
-
-      </div>
-
-      <hr>
-
-      <div class="row">
-
-        <div class="col-md-1">
-          <p><i class="fa fa-film fa-4x"></i></p>
-          <p>May 24, 2013</p>
-        </div>
-        <div class="col-md-5">
-          <a href="blog-post.html"><img src="http://placehold.it/600x300" class="img-responsive"></a>
-        </div>
-        <div class="col-md-6">
-          <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a></h3>
-          <p>by <a href="#">Start Bootstrap</a></p>
-          <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-          <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-
-        <div class="col-md-1">
-          <p><i class="fa fa-file-text fa-4x"></i></p>
-          <p>May 24, 2013</p>
-        </div>
-        <div class="col-md-5">
-          <a href="blog-post.html"><img src="http://placehold.it/600x300" class="img-responsive"></a>
-        </div>
-        <div class="col-md-6">
-          <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a></h3>
-          <p>by <a href="#">Start Bootstrap</a></p>
-          <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-          <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-
-        <ul class="pager">
-          <li class="previous"><a href="#">&larr; Older</a></li>
-          <li class="next"><a href="#">Newer &rarr;</a></li>
-        </ul>
-
-      </div>
-
-    </div><!-- /.container -->
+    </div>
+</div>
 {% endblock %}

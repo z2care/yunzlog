@@ -26,9 +26,9 @@ class BlogsList(BaseRequestHandler):
         max=(size/6)+(0 if size%6==0 else 1)#1~&
 
         articles = Article.query(Article.draft==False).order(-Article.date).fetch(6, offset=int(page-1)*6)
-
-        older = (None if page==max else page+1)
-        newer = (None if page==1 else page-1)
+        if articles:
+            older = (None if page==max else page+1)
+            newer = (None if page==1 else page-1)
 
         template_values = {
             'page_title': 'Blog',

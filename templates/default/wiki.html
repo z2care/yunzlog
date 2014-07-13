@@ -1,121 +1,58 @@
 {% extends "base.html" %}
+{% block marketing %}
+        <div id="home-page-marketing" class="row">
+            <div id="bricks-hero-unit" class="span6">
+                <h1>Contact Us</h1>
+                <div class="row">
+                    <p class="explanation span3">
+
+                        Bootstrap Themes,<br />
+                        235 Small Scale Road, <br />
+                        PO Box 12345, The City - USA<br /><br />
+
+                        Tel: +1-555-563-3434 <br />
+                        Fax: +1-555-563-3535 <br />
+                    </p>
+                    <p class="explanation span3">
+                    <span class="pull-right">
+                        Email: info@google.com<br />
+                        Careers: careers@google.com
+                    </span>
+                    </p>
+                </div>
+            </div>
+            <div id="contact-map" class="span6">
+                <div class="img-polaroid">
+                    <iframe style="width:100%; height: 245px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.055177,-95.668945&amp;spn=2.4635,6.141357&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.055177,-95.668945&amp;spn=2.4635,6.141357&amp;z=7&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
-    <!-- Page Content -->
 
+<div id="content">
     <div class="container">
-      
-      <div class="row">
-        <div class="col-md-3 col-sm-4 sidebar">
-            <ul class="nav nav-stacked nav-pills">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="contact.php">Contact</a></li>
-              <li class="disabled"><a href="#">Portfolio</a></li>
-              <li><a href="portfolio-1-col.html">1 Column Portfolio</a></li>
-              <li><a href="portfolio-2-col.html">2 Column Portfolio</a></li>
-              <li><a href="portfolio-3-col.html">3 Column Portfolio</a></li>
-              <li><a href="portfolio-4-col.html">4 Column Portfolio</a></li>
-              <li><a href="portfolio-item.html">Single Portfolio Item</a></li>
-              <li class="disabled"><a href="#">Blog</a></li>
-              <li><a href="blog-home-1.html">Blog Home 1</a></li>
-              <li><a href="blog-home-2.html">Blog Home 2</a></li>
-              <li><a href="blog-post.html">Blog Post</a></li>
-              <li class="disabled"><a href="#">Blog</a></li>
-              <li><a href="full-width.html">Full Width Page</a></li>
-              <li class="active"><a href="sidebar.html">Sidebar Page</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="404.html">404</a></li>
-              <li><a href="pricing.html">Pricing Table</a></li>
-            </ul>
-        </div>
-      
-        <div class="col-md-9 col-sm-8">
-          <h1 class="page-header">CTS List Page <small>Collect all android solution</small></h1>
-          <ul class="breadcrumb">
-          	  <li><select id="packages">
-                  <option>Packages</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select></li>
-              <li><select id="classes">
-                  <option>Classes</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select></li>
-              <li><select id="methods">
-                  <option>Methods</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select></li>
-          </ul>
-          <ul class="breadcrumb">
-            <li><a href="Package">Package</a></li>
-            <li><a href="Class">Class</a></li>
-            <li class="active">Method</li>
-          </ul>
-          <p id="target"></p>
-          <p>author date read</p>
-          <p>exception</p>
-          <p>analysis</p>
-          <p>solution</p>
+        <div class="page-header">
+            <h2>Reach us thru' email</h2>
         </div>
 
-      </div><!-- /.row -->
-<SCRIPT LANGUAGE="JavaScript">
-$(function(){
-
-  var $packages = $('#packages');
-  var $classes = $('#classes');
-  var $methods = $('#methods');
-  var $target = $('#target')
-
-  $packages.change(function()
-  {
-    $classes.empty().append('<option>loading...</option>');
-		load_classes($(this).val());
-	});
-	$classes.change(function(){
-		$methods.empty().append('<option>loading...</option>');
-		load_methods($(this).val());	
-	});
-	$methods.change(function(){
-		$target.empty().append('loading...')
-		load_target($(this).val());	
-	});
-	
-	function load_packages()
-	{
-		//ajax for package info
-		//append package info
-	}
-
-	function load_classes(parentId)
-	{
-		$methods.empty().append('<option>loading...</option>');
-		$classes.empty().append('<option>21</option>');
-		$classes.append('<option>22</option>');
-	}
-
-	function load_methods(id)
-	{
-		$methods.empty().append('<option>31</option>');
-		$methods.append('<option>32</option>');
-	}
-
-	function load_target(id)
-	{
-		$target.append('<b>target text</b>');
-	}
-	
-	load_package()
-});
-</SCRIPT>
-    </div><!-- /.container -->
+        <form class="row sengal-form" />
+            <div class="span6">
+                <label>Name</label>
+                <input type="text" class="input-block-level" placeholder="Enter your Full Name" />
+                <label>Email</label>
+                <input type="text" class="input-block-level" placeholder="Your Email Address" />
+            </div>
+            <div class="span6">
+                <label>Message</label>
+                <textarea rows="6" cols="10" class="input-block-level" placeholder="Your message here"></textarea>
+            </div>
+            <div class="span12">
+                <button class="btn btn-primary btn-large pull-right">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
