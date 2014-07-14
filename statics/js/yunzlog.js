@@ -15,7 +15,9 @@ function smt_func(){
       },
       //get comment block and fill them with response data
       success: function(response) {
-        $( response ).prependTo( "#comments-list" );
+        $("#cmt_author").html($("#name").val());
+        $("#cmt_ctt").html($("#cmtext").val());
+        $( response ).prependTo($("#cmt_ajax").html());
       },
     });
     return false;

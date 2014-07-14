@@ -19,22 +19,36 @@
                 </div>
 
                 <div class="entry-comments">
-                    <h3>{{ coments|count }} Comments</h3>
-                    {% if comments %}
+                    <h3>{{ coments|length }} Comments</h3>
                     <ul id="comments-list">
+                        <div id="cmt_ajax" style="display:none">
+                            <li class="comment media">
+                                <img id="cmt_img" src="http://placehold.it/75x75" class="img-polaroid pull-left" />
+                                <div class="media-body">
+                                    <h4 class="comment-author">
+                                        <div id="cmt_author"></div>
+                                        <small id="cmt_date"></small>
+                                    </h4>
+                                    <div class="comment-content">
+                                        <p id="cmt_ctt"></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                        {% if comments %}
                         {% for comment in comments %}
                         <li class="comment media">
                             <img src="http://placehold.it/75x75" class="img-polaroid pull-left" />
                             <div class="media-body">
-                                <h4 class="comment-author"{{ comment.author }} <small> on {{comment.date}}</small></h4>
+                                <h4 class="comment-author">{{ comment.author }} <small>{{comment.date}}</small></h4>
                                 <div class="comment-content">
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
                         </li>
                         {% endfor %}
+                        {% endif %}
                     </ul>
-                    {% endif %}
                 </div>
 
                 <div class="add-a-comment-form">
