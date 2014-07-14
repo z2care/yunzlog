@@ -29,6 +29,9 @@ class BlogsList(BaseRequestHandler):
         if articles:
             older = (None if page==max else page+1)
             newer = (None if page==1 else page-1)
+        else:
+            older = None
+            newer = None
 
         template_values = {
             'page_title': 'Blog',
