@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-04 00:07+0800\n"
+"POT-Creation-Date: 2014-07-11 17:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,151 +19,119 @@ msgstr ""
 
 #: templates/admin/article.html:8
 msgid "Admin"
-msgstr "管理"
+msgstr ""
 
 #: templates/admin/article.html:9 templates/admin/base.html:46
 #: templates/admin/base.html:54
 msgid "Article"
-msgstr "文章"
-
-#: templates/admin/article.html:29
-msgid "Original"
-msgstr "原创"
+msgstr ""
 
 #: templates/admin/article.html:30
-msgid "Translate"
-msgstr "翻译"
+msgid "Original"
+msgstr ""
 
 #: templates/admin/article.html:31
+msgid "Translate"
+msgstr ""
+
+#: templates/admin/article.html:32
 msgid "Reprint"
-msgstr "转载"
+msgstr ""
 
-#: templates/admin/article.html:68
+#: templates/admin/article.html:70
 msgid "Save Draft"
-msgstr "保存草稿"
+msgstr ""
 
-#: templates/admin/article.html:69
+#: templates/admin/article.html:71
 msgid "Pub Article"
-msgstr "发布文章"
+msgstr ""
 
 #: templates/admin/base.html:41
 msgid "Main"
-msgstr "概要"
+msgstr ""
 
 #: templates/admin/base.html:44
 msgid "Editing"
-msgstr "编辑"
+msgstr ""
 
 #: templates/admin/base.html:47 templates/admin/base.html:55
-#: templates/default/base.html:40
+#: templates/default/base.html:29
 msgid "Wiki"
-msgstr "维基"
+msgstr ""
 
 #: templates/admin/base.html:52
 msgid "Listing"
-msgstr "列表"
+msgstr ""
 
 #: templates/admin/base.html:56
 msgid "Comment"
-msgstr "评论"
+msgstr ""
 
 #: templates/admin/base.html:57
 msgid "Category"
-msgstr "分类"
+msgstr ""
 
-#: templates/admin/base.html:62 templates/default/base.html:42
+#: templates/admin/base.html:62 templates/default/base.html:31
 msgid "Gallery"
-msgstr "图库"
+msgstr ""
 
 #: templates/admin/base.html:64
 msgid "Setting"
-msgstr "设置"
+msgstr ""
 
 #: templates/admin/listing.html:27
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 #: templates/admin/listing.html:28
 msgid "Title"
-msgstr "标题"
+msgstr ""
 
 #: templates/admin/listing.html:29
 msgid "Draft"
-msgstr "草稿"
+msgstr ""
 
-#: templates/admin/listing.html:30 templates/default/bloglist.html:29
-#: templates/default/singleblog.html:28
+#: templates/admin/listing.html:30
 msgid "Author"
-msgstr "作者"
+msgstr ""
 
-#: templates/admin/listing.html:31 templates/default/bloglist.html:28
-#: templates/default/singleblog.html:27
+#: templates/admin/listing.html:31
 msgid "Read"
-msgstr "阅读"
+msgstr ""
 
 #: templates/admin/listing.html:32
 msgid "Date"
-msgstr "日期"
+msgstr ""
 
 #: templates/admin/listing.html:33
 msgid "Operate"
-msgstr "操作"
+msgstr ""
 
 #: templates/admin/listing.html:47
 msgid "Edit"
-msgstr "编辑"
+msgstr ""
 
 #: templates/admin/listing.html:49
 msgid "Delete"
-msgstr "删除"
+msgstr ""
+
+#: templates/default/base.html:27
+msgid "Home"
+msgstr ""
+
+#: templates/default/base.html:28
+msgid "Blog"
+msgstr ""
+
+#: templates/default/base.html:30
+msgid "Project"
+msgstr ""
 
 #: templates/default/base.html:32
-msgid "Yunzlog"
-msgstr "云之歌"
-
-#: templates/default/base.html:37 templates/default/bloglist.html:10
-#: templates/default/singleblog.html:10
-msgid "Home"
-msgstr "首页"
-
-#: templates/default/base.html:39 templates/default/bloglist.html:11
-#: templates/default/singleblog.html:11
-msgid "Blog"
-msgstr "博客"
-
-#: templates/default/base.html:41
-msgid "Project"
-msgstr "项目"
-
-#: templates/default/base.html:43
 msgid "About"
-msgstr "关于"
+msgstr ""
 
-#: templates/default/bloglist.html:27 templates/default/singleblog.html:26
-msgid "Posted on"
-msgstr "发布于"
-
-#: templates/default/bloglist.html:33
-msgid "Read More"
-msgstr "阅读更多"
-
-#: templates/default/bloglist.html:47
-msgid "Blog Search"
-msgstr "博客搜索"
-
-#: templates/default/singleblog.html:8
-msgid "BlogType"
-msgstr "博客类型"
-
-#: templates/default/singleblog.html:8
-msgid "PageClass"
-msgstr "博客分类"
-
-#: templates/default/singleblog.html:48
-msgid "Name"
-msgstr "昵称"
-
-#: templates/default/singleblog.html:51
-msgid "Email"
-msgstr "邮件"
+#: templates/default/base.html:95
+msgid "Yunzlog"
+msgstr ""
 

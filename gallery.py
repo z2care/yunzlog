@@ -55,7 +55,7 @@ class AuthCode(BaseRequestHandler):
         logging.info('get auth code')
 
         img, str = self.create_validate_code()
-
+        self.response.set_cookie('yunzlog_authcode', str, expires=(datetime.now()+timedelta(minutes=3)), secure=False)
         output = StringIO()
         img.save(output, 'gif')
         img_data = output.getvalue()

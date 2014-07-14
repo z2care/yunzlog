@@ -1,4 +1,4 @@
-# Chinese (Simplified, China) translations for PROJECT.
+﻿# Chinese (Simplified, China) translations for PROJECT.
 # Copyright (C) 2014 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-04 00:07+0800\n"
-"PO-Revision-Date: 2014-04-04 00:23+0800\n"
+"POT-Creation-Date: 2014-07-11 17:47+0800\n"
+"PO-Revision-Date: 2014-07-11 17:48+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -20,43 +20,43 @@ msgstr ""
 
 #: templates/admin/article.html:8
 msgid "Admin"
-msgstr "管理"
+msgstr ""
 
 #: templates/admin/article.html:9 templates/admin/base.html:46
 #: templates/admin/base.html:54
 msgid "Article"
 msgstr "文章"
 
-#: templates/admin/article.html:29
+#: templates/admin/article.html:30
 msgid "Original"
 msgstr "原创"
 
-#: templates/admin/article.html:30
+#: templates/admin/article.html:31
 msgid "Translate"
 msgstr "翻译"
 
-#: templates/admin/article.html:31
+#: templates/admin/article.html:32
 msgid "Reprint"
-msgstr "转载"
+msgstr "转发"
 
-#: templates/admin/article.html:68
+#: templates/admin/article.html:70
 msgid "Save Draft"
 msgstr "保存草稿"
 
-#: templates/admin/article.html:69
+#: templates/admin/article.html:71
 msgid "Pub Article"
 msgstr "发布文章"
 
 #: templates/admin/base.html:41
 msgid "Main"
-msgstr "概要"
+msgstr "主要"
 
 #: templates/admin/base.html:44
 msgid "Editing"
 msgstr "编辑"
 
 #: templates/admin/base.html:47 templates/admin/base.html:55
-#: templates/default/base.html:40
+#: templates/default/base.html:29
 msgid "Wiki"
 msgstr "维基"
 
@@ -72,9 +72,9 @@ msgstr "评论"
 msgid "Category"
 msgstr "分类"
 
-#: templates/admin/base.html:62 templates/default/base.html:42
+#: templates/admin/base.html:62 templates/default/base.html:31
 msgid "Gallery"
-msgstr "图库"
+msgstr "相册"
 
 #: templates/admin/base.html:64
 msgid "Setting"
@@ -92,15 +92,13 @@ msgstr "标题"
 msgid "Draft"
 msgstr "草稿"
 
-#: templates/admin/listing.html:30 templates/default/bloglist.html:29
-#: templates/default/singleblog.html:28
+#: templates/admin/listing.html:30
 msgid "Author"
 msgstr "作者"
 
-#: templates/admin/listing.html:31 templates/default/bloglist.html:28
-#: templates/default/singleblog.html:27
+#: templates/admin/listing.html:31
 msgid "Read"
-msgstr "阅读"
+msgstr "已读"
 
 #: templates/admin/listing.html:32
 msgid "Date"
@@ -118,53 +116,23 @@ msgstr "编辑"
 msgid "Delete"
 msgstr "删除"
 
-#: templates/default/base.html:32
-msgid "Yunzlog"
-msgstr "云之歌"
-
-#: templates/default/base.html:37 templates/default/bloglist.html:10
-#: templates/default/singleblog.html:10
+#: templates/default/base.html:27
 msgid "Home"
 msgstr "首页"
 
-#: templates/default/base.html:39 templates/default/bloglist.html:11
-#: templates/default/singleblog.html:11
+#: templates/default/base.html:28
 msgid "Blog"
 msgstr "博客"
 
-#: templates/default/base.html:41
+#: templates/default/base.html:30
 msgid "Project"
 msgstr "项目"
 
-#: templates/default/base.html:43
+#: templates/default/base.html:32
 msgid "About"
 msgstr "关于"
 
-#: templates/default/bloglist.html:27 templates/default/singleblog.html:26
-msgid "Posted on"
-msgstr "发布于"
-
-#: templates/default/bloglist.html:33
-msgid "Read More"
-msgstr "阅读更多"
-
-#: templates/default/bloglist.html:47
-msgid "Blog Search"
-msgstr "博客搜索"
-
-#: templates/default/singleblog.html:8
-msgid "BlogType"
-msgstr "博客类型"
-
-#: templates/default/singleblog.html:8
-msgid "PageClass"
-msgstr "博客分类"
-
-#: templates/default/singleblog.html:48
-msgid "Name"
-msgstr "昵称"
-
-#: templates/default/singleblog.html:51
-msgid "Email"
-msgstr "邮件"
+#: templates/default/base.html:95
+msgid "Yunzlog"
+msgstr "云之歌"
 

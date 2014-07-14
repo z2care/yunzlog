@@ -29,6 +29,9 @@ class BlogsList(BaseRequestHandler):
         if articles:
             older = (None if page==max else page+1)
             newer = (None if page==1 else page-1)
+        else:
+            older = None
+            newer = None
 
         template_values = {
             'page_title': 'Blog',
@@ -105,6 +108,7 @@ class BlogComment(BaseRequestHandler):
 
         comment=Comment(entry=ndb.Key('Article',int(keyid)),content=cmtext,ipaddr=ipaddr,author=author,email=email)
         comment.put()
+        #should check invalid human words, return the json msg, not web.
         self.response.write('<h3>%s<small>%s</small></h3><p>%s</p>'%(comment.author,comment.date,cmtext))
 #END: BlogCommentPage
 # START: Frame
