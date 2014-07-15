@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="entry-comments">
-                    <h3>{{ coments|length }} Comments</h3>
+                    <h3>{{ comments.count() }} Comments</h3>
                     <ul id="comments-list">
                         <div id="cmt_ajax" style="display:none">
                             <li class="comment media">
@@ -55,7 +55,7 @@
                     <h3>Add Comment</h3>
                     <div class="row-fluid">
                         <div class="span8">
-                            <form class="sengal-form">
+                            <form class="sengal-form" id="cmt_form">
                                 <div class="control-group">
                                     <input type="text" class="input-block-level" name="name" id="name" placeholder="{{_('Name')}}" />
                                 </div>
@@ -69,7 +69,8 @@
                                 </div>
                                 <div class="control-group">
                                     <button type="submit" id="submit" class="btn btn-primary" onclick="return smt_func();"><i class="icon-edit"></i> Add Comment</button>
-                                    <img alt="" src="/gallery/authcode" onclick="ref_code(this)" href="">
+                                    <img alt="" src="/gallery/authcode" onclick="ref_code(this)" id="smt_img" />
+                                    <input type="text" class="span3" id="cmt_code" />
                                 </div>
                             </form>
                         </div>
