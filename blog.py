@@ -72,13 +72,13 @@ class BlogsTags(BaseRequestHandler):
     def get(self, link=None):
         #6 post per page as default
         page=self.request.get('page')
-        page=(int(page) if page else 1)#to int 1~&
+        page=(int(page) if page else 0)#to int 0~&, 0 is only for older pager.
         size=Article.query(Article.draft==False, Article.tags.IN([link])).count()#0~&
         max=(size/6)+(0 if size%6==0 else 1)#1~&
 
         articles = Article.query(Article.draft==False, Article.tags.IN([link])).order(-Article.date).fetch(6, offset=int(page-1)*6)
 
-        older = (None if page==max else page+1)
+        older = (None if (page==max or page==0) else page+1)
         newer = (None if page==1 else page-1)
 
         template_values = {
