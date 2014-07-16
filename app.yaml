@@ -21,8 +21,8 @@ handlers:
   mime_type: image/x-icon
 
 - url: /robots\.txt
-  static_files: static/robots.txt
-  upload: static/robots.txt
+  static_files: statics/robots.txt
+  upload: statics/robots.txt
 
 - url: /statics
   static_dir: statics
